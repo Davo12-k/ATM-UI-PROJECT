@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>deposit page</title>
 </head>
-<body>
-    <h2 style="text-align: center;">Deposit</h2>
-    <p style="text-align: center;">Please enter the amount you want to deposit</p>
-    <div class="pin-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh;gap: 5px;">
+<body style="background-color: white; font-family: Arial, sans-serif; text-align: center; padding: 50px;">  
+   <header style="display: flex; flex-direction: column; margin-top: 15px;">
+      <h1 style="margin: 0 0 5px 0; color: #0f2d4e; font-size: 3rem;">
+      Deposit
+     </h1>
+      <p style="margin: 0; color: #4a5568; font-size: 2rem;">
+      Please enter the amount you want to deposit.
+     </p>
+   </header>
+      <div class="pin-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh;gap: 5px;">
         <input type="" id="depositAmount" placeholder="Enter amount" style="padding: 10px; font-size: 16px; width: 200px; text-align: center; margin: 0 auto; display: block;">
 
          <div class="keypad" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 150px">
@@ -24,7 +30,7 @@
            <button>0</button>
            <button>00</button>
            <button>Clear</button>
-     </div>
+    </div>
     <button style="width: 150px; padding: 4px; font-size: 15px; border: 2px solid grey; border-radius: 8px; cursor: pointer; margin-top: 10px;">Submit</button> 
 </div>
    
