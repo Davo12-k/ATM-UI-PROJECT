@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ATM Menu</title>
 </head>
-<body>
-    <h1>ATM Menu</h1>
-    
-<div style="display: flex; justify-content: space-between; align-items: center; height: 100vh;">
 
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        <button>Check Balance</button>
-        <button>Withdraw Cash</button>
-        <button>Deposit Money</button>
+<body style="margin: 0; font-family: Arial, sans-serif;">
+
+    <h1 style="text-align: center; margin-top: 30px;">Menu</h1>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 65vh; padding: 0 50px;">
+
+        
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                Check Balance
+            </button>
+
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                Withdraw Cash
+            </button>
+
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                Deposit Money
+            </button>
+        </div>
+
+        
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                Transfer Money
+            </button>
+
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                Change PIN
+            </button>
+
+            <button style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
+                View Transaction History
+            </button>
+        </div>
+
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        <button>Transfer Money</button>
-        <button>Change PIN</button>
-        <button>View Transaction History</button>
-    </div>
-
     
-</div>
+    <button style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 180px; padding: 12px; font-size: 18px; border: none; border-radius: 8px; color:  white; cursor: pointer; background-color: red;">
+        Exit
+    </button>
 
-       <button>Exit</button>
-
-    
-    
 </body>
 </html>
