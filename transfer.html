@@ -5,27 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer Page</title>
 </head>
-<body>
 
-    <input id="transfer-amount" type="text" placeholder="Choose a recipient account" style="display: block; margin: 20px auto; padding: 10px; font-size: 16px; width: 220px; text-align: center; border: 3px solid #ccc; border-radius: 4px;">
+<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f1f4f8; font-family:'Segoe UI', Tahoma, Verdana, sans-serif; color:#14233a;">
 
-    <input type="text" placeholder="Enter Amount" style="display: block; margin: 20px auto; padding: 10px; font-size: 16px; width: 220px; text-align: center; border: 3px solid #ccc; border-radius: 4px;">
+    <div style="width:100%; max-width:380px; margin:20px; padding:28px; background:white; border-radius:12px; box-shadow:0 8px 25px rgba(11,42,74,0.12); box-sizing:border-box;">
 
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 5px; width: 250px; margin: 30px auto 0; align-items: center; justify-content: center;">
-        <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">1</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">2</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">3</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">4</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">5</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">6</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">7</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">8</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">9</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 60px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">0</button>
-    <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width: 65px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">Delete</button>
-   <button style="display: block; margin: 10px auto; padding: 10px; font-size: 16px; width:80px; height: 60px; border: 3px solid #ccc; border-radius: 4px;">Enter</button>
-   
+        <p style="margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:2px; color:#7b8798;">
+            ACCOUNT SERVICES
+        </p>
+
+        <h2 style="margin:0 0 8px; font-size:28px; color:#0b2a4a;">
+            Funds Transfer
+        </h2>
+
+        <p style="margin:0 0 25px; font-size:14px; color:#68768a;">
+            Enter the recipient's account number and transfer amount.
+        </p>
+
+        <label for="transfer-amount" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
+            Recipient Account Number
+        </label>
+
+        <input id="transfer-amount" type="text" placeholder="Enter account number"
+            style="display:block; box-sizing:border-box; margin:0 0 18px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px; outline:none;">
+
+        <label for="amount" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
+            Transfer Amount
+        </label>
+
+        <input id="amount" type="text" placeholder="₦ Enter amount"
+            style="display:block; box-sizing:border-box; margin:0 0 22px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px; outline:none;">
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:100%;">
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">1</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">2</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">3</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">4</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">5</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">6</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">7</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">8</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">9</button>
+
+            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:#14233a; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">0</button>
+
+            <button style="height:52px; font-size:13px; font-weight:600; background:#fff0ef; color:#b3261e; border:1px solid #e5b7b4; border-radius:6px; cursor:pointer;">Delete</button>
+
+            <button style="height:52px; font-size:13px; font-weight:600; background:#0b2a4a; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
+
+        </div>
+
+        <p style="margin:20px 0 0; text-align:center; font-size:12px; color:#7b8798;">
+            Please verify the recipient's details before transferring.
+        </p>
+
     </div>
-    
+
 </body>
 </html>

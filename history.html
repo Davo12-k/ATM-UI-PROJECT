@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Transaction History</title>
 </head>
-<body>
-    
+<body style="margin:0; padding:30px 15px; font-family:Arial, sans-serif; background-color:#f2f4f7; color:#222;">
+
+    <div style="max-width:600px; margin:30px auto; padding:30px; background-color:white; border:1px solid #ddd; border-radius:8px;">
+
+        <p style="font-size:13px; color:#666; letter-spacing:1px; margin-bottom:8px;">ACCOUNT STATEMENT</p>
+
+        <h1 style="font-size:26px; margin-top:0; margin-bottom:25px; color:#172b4d;">Transaction History</h1>
+
+        <div style="display:flex; justify-content:space-between; padding:14px 10px; background-color:#172b4d; color:white; font-size:14px; font-weight:bold;">
+            <span>Details</span>
+            <span>Amount</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 10px; border-bottom:1px solid #e5e5e5;">
+            <span>Deposit</span>
+            <span style="color:#218838; font-weight:bold;">+₦5,000.00</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 10px; border-bottom:1px solid #e5e5e5;">
+            <span>Withdrawal</span>
+            <span style="color:#c0392b; font-weight:bold;">-₦2,000.00</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 10px; border-bottom:1px solid #e5e5e5;">
+            <span>Deposit</span>
+            <span style="color:#218838; font-weight:bold;">+₦10,000.00</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 10px; border-bottom:1px solid #e5e5e5;">
+            <span>Airtime Purchase</span>
+            <span style="color:#c0392b; font-weight:bold;">-₦2,000.00</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 10px; border-bottom:1px solid #e5e5e5;">
+            <span>Electricity</span>
+            <span style="color:#c0392b; font-weight:bold;">-₦10,000.00</span>
+        </div>
+
+        <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px;">
+
+            <button onclick="window.print()" style="padding:12px 18px; background-color:#172b4d; color:white; border:none; border-radius:5px; cursor:pointer; font-size:14px;">
+                Print Statement
+            </button>
+
+            <a href="menu.html" style="text-decoration:none;">
+                <button style="padding:12px 18px; background-color:white; color:#172b4d; border:1px solid #172b4d; border-radius:5px; cursor:pointer; font-size:14px;">
+                    Back to Menu
+                </button>
+            </a>
+
+            <a href="atm_ui.html" style="text-decoration:none;">
+                <button style="padding:12px 18px; background-color:#b3261e; color:white; border:none; border-radius:5px; cursor:pointer; font-size:14px;">
+                    Exit
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
+```

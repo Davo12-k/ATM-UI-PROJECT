@@ -3,24 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance page</title>
+    <title>Balance Page</title>
 </head>
-<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background: whitesmoke; font-family:'Segoe UI',Tahoma,Verdana,sans-serif; color:#14233a;">
-    <div style="width:100%; padding: 24px; max-width:440px; margin:24px; background:white; border-radius:16px; overflow:hidden; box-shadow:0 12px 40px rgba(11,42,74,0.18);">
-        <p style="margin:0 0 6px; font-size:12px; font-weight:700; letter-spacing:2px; color:#8a99ad;">ACCOUNT ENQUIRY</p>
-        <h2 style="margin:0 0 6px; font-size:30px; font-weight:700; letter-spacing:-0.3px; color:#0b2a4a;">Check Balance</h2>
-        <div style="padding:24px 16px; background:#f6f8fb; border:2px solid #0b2a4a; border-radius:12px;">
-            <p>Available balance</p>
-            <h1>₦25,000.00</h1>
+
+<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f1f4f8; font-family:'Segoe UI', Tahoma, Verdana, sans-serif; color:#14233a;">
+
+    <div style="width:100%; padding:28px; max-width:440px; margin:24px; background:white; border-radius:14px; box-shadow:0 8px 25px rgba(11,42,74,0.12); box-sizing:border-box;">
+
+        <p style="margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:2px; color:#7b8798;">
+            ACCOUNT ENQUIRY
+        </p>
+
+        <h2 style="margin:0 0 25px; font-size:28px; font-weight:700; color:#0b2a4a;">
+            Check Balance
+        </h2>
+
+        <div style="padding:24px 20px; background:#f6f8fb; border:1px solid #dce3ec; border-left:5px solid #0b2a4a; border-radius:8px; margin-bottom:28px;">
+
+            <p style="margin:0 0 12px; font-size:14px; color:#65748b;">
+                Available Balance
+            </p>
+
+            <h1 style="margin:0; font-size:32px; font-weight:700; color:#0b2a4a;">
+                ₦25,000.00
+            </h1>
+
+            <p style="margin:12px 0 0; font-size:12px; color:#7b8798;">
+                Your current account balance
+            </p>
+
         </div>
 
+        <button onclick="window.print()" style="display:block; box-sizing:border-box; height:52px; margin-bottom:12px; width:100%; font-size:16px; font-weight:600; color:white; background:#0b2a4a; border:none; border-radius:7px; cursor:pointer;">
+            Print Receipt
+        </button>
 
+        <a href="menu.html" style="display:block; text-decoration:none; margin-bottom:12px;">
+            <button style="display:block; box-sizing:border-box; height:52px; width:100%; font-size:16px; font-weight:600; color:#0b2a4a; background:white; border:1px solid #0b2a4a; border-radius:7px; cursor:pointer;">
+                Back to Menu
+            </button>
+        </a>
 
-        <button style="display:block; box-sizing:border-box; height:52px; margin-bottom:12px;width: 100%; font-size:17px; font-weight:700; color:#ffffff; background:#0b2a4a; border-radius:10px;">Print Receipt</button>
-        <button style="display:block; box-sizing:border-box; height:52px;  margin-bottom:12px; font-size:17px; font-weight:600; color:#0b2a4a; background:#ffffff; width: 100%; border:2px solid #0b2a4a; border-radius:10px;">Back to Menu</button>
-        <button style="display:block; box-sizing:border-box; height:52px; font-size:17px; font-weight:600; color:#b3261e; background:#ffffff; border:2px solid #b3261e; border-radius:10px; width: 100%;">Exit</button>
+        <a href="atm_ui.html" style="display:block; text-decoration:none;">
+            <button style="display:block; box-sizing:border-box; height:52px; width:100%; font-size:16px; font-weight:600; color:#b3261e; background:white; border:1px solid #b3261e; border-radius:7px; cursor:pointer;">
+                Exit
+            </button>
+        </a>
 
     </div>
-    
+
 </body>
 </html>
