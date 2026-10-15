@@ -6,49 +6,69 @@
     <title>ATM Menu</title>
 </head>
 
-<body style="margin: 0; font-family: Arial, sans-serif;">
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #F8FAF8; color: #1F2937;">
 
-    <h1 style="text-align: center; margin-top: 30px;">MENU</h1>
+    <h1 style="text-align: center; margin-top: 40px; margin-bottom: 10px; font-size: 32px; font-weight: 800; letter-spacing: 3px; color: #14532D;">
+        ATM MENU
+    </h1>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; height: 65vh; padding: 0 50px;">
+    <p style="text-align: center; margin-top: 0; color: #6B7280; font-size: 15px;">
+        Select a service to continue
+    </p>
 
-        
-        <div style="display: flex; flex-direction: column; gap: 30px;">
-            <button onclick="window.location.href='check_balance.html'" style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                Check Balance
-            </button>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 40px; min-height: 65vh; padding: 20px; box-sizing: border-box;">
 
-            <button onclick="window.location.href='withdraw.html'" style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                Withdraw Cash
-            </button>
+        <div style="display: flex; flex-direction: column; gap: 22px;">
 
-            <button onclick="window.location.href='deposit.html'" style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                Deposit Money
-            </button>
+            <a href="check-balance.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Check Balance
+                </button>
+            </a>
+
+            <a href="withdraw.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Withdraw Cash
+                </button>
+            </a>
+
+            <a href="deposit.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Deposit Money
+                </button>
+            </a>
+
         </div>
 
-        
-        <div style="display: flex; flex-direction: column; gap: 30px;">
-            <button onclick="window.location.href='transfer.html'"
-                style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                Transfer Money
-            </button>
+        <div style="display: flex; flex-direction: column; gap: 22px;">
 
-            <button onclick="window.location.href='change_pin.html'" style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                Change PIN
-            </button>
+            <a href="transfer.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Transfer Money
+                </button>
+            </a>
 
-            <button onclick="window.location.href='transaction_history.html'" style="width: 200px; padding: 12px; font-size: 18px; border: 2px solid grey; border-radius: 8px; cursor: pointer;">
-                View Transaction History
-            </button>
+            <a href="change_pin.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Change PIN
+                </button>
+            </a>
+
+            <a href="transaction_history.html" style="text-decoration: none;">
+                <button style="width: 250px; padding: 18px 15px; font-size: 17px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; background-color: #14532D; color: white; box-shadow: 0 4px 8px rgba(20,83,45,0.15);">
+                    Transaction History
+                </button>
+            </a>
+
         </div>
 
     </div>
 
-    
-    <button style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 180px; padding: 12px; font-size: 18px; border: none; border-radius: 8px; color:  white; cursor: pointer; background-color: red;">
-        Exit
-    </button>   
+    <a href="atm_ui.html" style="text-decoration: none;">
+        <button style="position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 200px; padding: 14px; font-size: 17px; font-weight: 700; border: none; border-radius: 10px; color: white; cursor: pointer; background-color: #B3261E; box-shadow: 0 4px 8px rgba(179,38,30,0.2);">
+            Exit ATM
+        </button>
+    </a>
 
 </body>
 </html>

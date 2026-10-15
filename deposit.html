@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,45 +6,55 @@
     <title>Deposit Page</title>
 </head>
 
-<body style="margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 25px; font-family: Arial, sans-serif; background: #f4f7fb;">
+<body style="margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:22px; font-family:Arial, sans-serif; background:#f1f4f8; color:#14233a;">
 
-    <header style="width: 250px; text-align: left; gap: 10px; display: flex; flex-direction: column; align-items: flex-start;">
-        <h1 style="margin: 0; font-size: 1.5rem; font-weight: 600; color: black;">
+    <header style="width:100%; max-width:320px; box-sizing:border-box; padding:0 10px; display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
+
+        <p style="margin:0; font-size:12px; font-weight:700; letter-spacing:2px; color:#7b8798;">
+            ACCOUNT SERVICES
+        </p>
+
+        <h1 style="margin:0; font-size:28px; font-weight:700; color:#0b2a4a;">
             Deposit Money
         </h1>
 
-       <p style="margin: 0; color: green; font-size: 1rem;">
-    Please enter the amount you want to deposit...
-       </p>
+        <p style="margin:0; color:#64748b; font-size:14px; line-height:1.5;">
+            Enter the amount you want to deposit into your account.
+        </p>
+
     </header>
 
-    <div class="pin-container" style="display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 25px; background: #ffffff; border: 1px solid #e1e6ee; border-radius: 12px;">
+    <div class="pin-container" style="display:flex; flex-direction:column; align-items:center; gap:18px; padding:25px; width:270px; max-width:calc(100% - 80px); background:#ffffff; border:1px solid #e1e6ee; border-radius:10px; box-shadow:0 6px 20px rgba(11,42,74,0.08);">
 
-        <input id="" type="text" placeholder="Enter Amount" style="box-sizing: border-box; padding: 12px; font-size: 18px; width: 220px; text-align: center; border: 1px solid #cbd5e1; border-radius: 6px; outline: none;">
+        <input id="amount" type="text" placeholder="Enter Amount (₦)" style="box-sizing:border-box; padding:13px 10px; font-size:17px; width:100%; text-align:center; border:1px solid #cbd5e1; border-radius:6px; outline:none;">
 
-        <div class="keypad" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px;">
+        <div class="keypad" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:100%;">
 
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">1</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">2</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">3</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">1</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">2</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">3</button>
 
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">4</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">5</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">6</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">4</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">5</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">6</button>
 
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">7</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">8</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">9</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">7</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">8</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">9</button>
 
-            <button style="padding: 12px; font-size: 16px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">00</button>
-            <button style="padding: 12px; font-size: 18px; border: 1px solid #dbe2ea; border-radius: 6px; background: #f8fafc; cursor: pointer;">0</button>
-            <button style="padding: 12px 5px; font-size: 13px; border: 1px solid #f1c5c5; border-radius: 6px; background: #fff1f1; color: #b3261e; cursor: pointer;">Delete</button>
+            <button style="padding:13px 5px; font-size:15px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">00</button>
+            <button style="padding:13px; font-size:18px; font-weight:600; color:#14233a; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">0</button>
+            <button style="padding:13px 5px; font-size:13px; font-weight:600; border:1px solid #f1c5c5; border-radius:6px; background:#fff1f1; color:#b3261e; cursor:pointer;">Delete</button>
 
         </div>
 
-        <button style="width: 220px; padding: 12px; font-size: 16px; font-weight: 600; color: #ffffff; background: #0f2d4e; border: none; border-radius: 8px; cursor: pointer; margin-top: 3px;">
+        <button style="width:100%; padding:14px; font-size:16px; font-weight:600; color:#ffffff; background:#0b2a4a; border:none; border-radius:7px; cursor:pointer; margin-top:3px;">
             Submit
         </button>
+
+        <p style="margin:0; text-align:center; font-size:12px; line-height:1.5; color:#7b8798;">
+            Please confirm the amount before submitting.
+        </p>
 
     </div>
 
