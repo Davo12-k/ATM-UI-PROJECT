@@ -54,8 +54,7 @@
 
     <script>
         const balanceElement = document.getElementById('balance');
-     let balance = 50000.00;
-
+     let balance = Number(localStorage.getItem("balance")) || 50000;
      const updateBalance = () => {                                                       balanceElement.innerText = `₦${balance.toLocaleString()}`
      }
 
