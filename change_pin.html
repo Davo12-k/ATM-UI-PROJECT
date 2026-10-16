@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Change PIN</title>
 </head>
-<body>
-    
+
+<body style="margin:0; font-family:Arial, sans-serif; background-color:#F8FAF8; color:#1F2937;">
+
+    <h2 style="text-align:center; margin-top:50px; color:#14532D; font-size:30px;">
+        Change Your PIN
+    </h2>
+
+    <form style="width:320px; margin:30px auto; padding:30px; background-color:white; border:1px solid #D1D5DB; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); box-sizing:content-box;">
+
+        <label for="current_pin" style="display:block; margin-bottom:8px; font-size:15px; font-weight:600;">
+            Current PIN:
+        </label>
+
+        <input type="password" id="current_pin" name="current_pin" maxlength="4" required
+            style="width:100%; box-sizing:border-box; padding:12px; margin-bottom:20px; border:1px solid #D1D5DB; border-radius:6px; font-size:16px; outline-color:#14532D;">
+
+        <label for="new_pin" style="display:block; margin-bottom:8px; font-size:15px; font-weight:600;">
+            New PIN:
+        </label>
+
+        <input type="password" id="new_pin" name="new_pin" maxlength="4" required
+            style="width:100%; box-sizing:border-box; padding:12px; margin-bottom:20px; border:1px solid #D1D5DB; border-radius:6px; font-size:16px; outline-color:#14532D;">
+
+        <label for="confirm_pin" style="display:block; margin-bottom:8px; font-size:15px; font-weight:600;">
+            Confirm PIN:
+        </label>
+
+        <input type="password" id="confirm_pin" name="confirm_pin" maxlength="4" required
+            style="width:100%; box-sizing:border-box; padding:12px; margin-bottom:25px; border:1px solid #D1D5DB; border-radius:6px; font-size:16px; outline-color:#14532D;">
+
+        <input type="submit" value="Change PIN"
+            style="width:100%; padding:14px; background-color:#14532D; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+
+    </form>
+    <a href="menu.html" style="text-decoration:none;">
+    <button style="display:block; width:200px; margin:20px auto; padding:14px; background-color:white; color:#14532D; border:2px solid #14532D; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+        Back To Menu
+    </button>
+</a>
+   
 </body>
 </html>
