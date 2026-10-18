@@ -58,5 +58,26 @@
 
     </div>
 
+    
+        
+<script>
+const amountInput = document.getElementById('amount');
+        const keypadButtons = document.querySelectorAll('.keypad button');
+
+        keypadButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.textContent;
+                if (value === 'Delete') {
+                    amountInput.value = amountInput.value.slice(0, -1);
+                } else {
+                    amountInput.value += value;
+                }
+
+                
+            });
+        });
+
+        
+</script>
 </body>
 </html>
