@@ -11,6 +11,20 @@
 
         <div style="background-color:white; padding:35px 30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); text-align:center; width:250px;">
 
+            <div>
+           <div>
+            <img src="" alt="">
+           </div>
+        <div>
+            <h3>ATM CUSTOMER</h3>
+            <p>Account information</p>
+        </div>
+          <hr>
+          <p>Account Number : 906****367</p>
+          <p>Account Type : Savings Account</p>
+          <hr>
+        </div>
+  
             <h2 style="margin:0 0 10px; color:#172b4d; font-size:24px;">Enter Your PIN</h2>
 
             <p style="font-size:14px; color:#666; margin-bottom:25px;">
@@ -44,49 +58,42 @@
 
                 <button onclick="digitPin('0')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">0</button>
 
-                  <a href="menu.html" style="text-decoration: none;">
-                    <button onclick="enterPin('Enter')" style="padding:19px 25px; font: size 16px; font-weight:bold; background-color:green; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
-                  </a>
+                  
+              <button onclick="enterPin()" style="padding:19px 25px; font-size:16px; font-weight:bold; background-color:green; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
 
             </div>
         </div>
     </div>
 
-    <script>
-        
-        digitPin =(digit) => {
-            const pinInput = document.getElementById('pin');
-            if (digit === 'Enter') {
-               
-                return;
-            }
-            if (pinInput.value.length < 4) {
-                pinInput.value += digit;
-            }
-        }
-
-        clearPin = () => {
-            document.getElementById('pin').value = '';
-        }
-
-        
-
-
-
-    </script>
-
 
 
 
 
     <script>
-       
-
-
         
+digitPin = (digit) => {
+    const pinInput = document.getElementById('pin');
 
+    if (pinInput.value.length < 4) {
+        pinInput.value += digit;
+    }
+}
 
+clearPin = () => {
+    document.getElementById('pin').value = '';
+}
 
+enterPin = () => {
+    if (document.getElementById('pin').value === '1234') {
+        alert('PIN correct! Welcome.');
+
+        window.location.href = 'menu.html';
+    } else {
+        alert('Incorrect PIN. Please try again.');
+
+        document.getElementById('pin').value = '';
+    }
+}
     </script>
 
 

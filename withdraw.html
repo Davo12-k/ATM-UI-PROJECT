@@ -59,7 +59,17 @@
                 const value = button.textContent;
 
                 if (value === 'Enter') {
+<<<<<<< HEAD
+                    const amount = parseFloat(withdrawAmountInput.value);
+                    if (!isNaN(amount) && amount > 0) {
+                        alert(`You have withdrawn ₦${amount.toFixed(2)}`);
+                        withdrawAmountInput.value = '';
+                    } else {
+                        alert('Please enter a valid amount to withdraw.');
+                    }
+=======
                     handleWithdrawal();
+>>>>>>> 95de6011a18a7b3bf91a0361c0702d8fbab5bbed
                 } else if (value === 'Delete') {
                     withdrawAmountInput.value = withdrawAmountInput.value.slice(0, -1);
                 } else {
@@ -67,6 +77,8 @@
                 }
             });
         });
+<<<<<<< HEAD
+=======
 
         function handleWithdrawal() {
             const amount = parseFloat(withdrawAmountInput.value);
@@ -98,6 +110,7 @@
             withdrawAmountInput.value = '';
         }
         
+>>>>>>> 95de6011a18a7b3bf91a0361c0702d8fbab5bbed
     
 
     </script>
