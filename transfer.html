@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title>Transfer Page</title>
 </head>
 
-<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f1f4f8; font-family:'Segoe UI', Tahoma, Verdana, sans-serif; color:#14233a;">
+<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f1f4f8; font-family:'Segoe UI',Tahoma,Verdana,sans-serif; color:#14233a;">
 
     <div style="width:100%; max-width:380px; margin:20px; padding:28px; background:white; border-radius:12px; box-shadow:0 8px 25px rgba(11,42,74,0.12); box-sizing:border-box;">
 
@@ -22,47 +23,74 @@
             Enter the recipient's account number and transfer amount.
         </p>
 
-        <label for="transfer-amount" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
+        <label for="accountNumber" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
             Recipient Account Number
         </label>
 
-        <input id="transfer-amount" type="text" placeholder="Enter account number"
-            style="display:block; box-sizing:border-box; margin:0 0 18px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px; outline:none;">
+        <input
+            id="accountNumber"
+            type="text"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="Enter account number"
+            style="display:block; box-sizing:border-box; margin-bottom:12px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px;"
+        >
+
+        <button
+            id="checkAccount"
+            type="button"
+            style="width:100%; padding:12px; margin-bottom:10px; background:#0b2a4a; color:white; border:none; border-radius:6px; cursor:pointer;"
+        >
+            Verify Account
+        </button>
+
+        <p id="accountName" aria-live="polite" style="margin:0 0 20px; font-size:14px; font-weight:600;"></p>
 
         <label for="amount" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
             Transfer Amount
         </label>
 
-        <input id="amount" type="text" placeholder="₦ Enter amount"
-            style="display:block; box-sizing:border-box; margin:0 0 22px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px; outline:none;">
+        <input
+            id="amount"
+            type="text"
+            inputmode="numeric"
+            placeholder="₦ Enter amount"
+            readonly
+            style="display:block; box-sizing:border-box; margin-bottom:22px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px;"
+        >
 
-        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:100%;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
 
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">1</button>
+            <button type="button" class="key" data-number="1">1</button>
+            <button type="button" class="key" data-number="2">2</button>
+            <button type="button" class="key" data-number="3">3</button>
+            <button type="button" class="key" data-number="4">4</button>
+            <button type="button" class="key" data-number="5">5</button>
+            <button type="button" class="key" data-number="6">6</button>
+            <button type="button" class="key" data-number="7">7</button>
+            <button type="button" class="key" data-number="8">8</button>
+            <button type="button" class="key" data-number="9">9</button>
+            <button type="button" class="key" data-number="0">0</button>
 
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">2</button>
+            <button id="deleteBtn" type="button" style="height:52px; font-size:13px; font-weight:600; background:#fff0ef; color:#b3261e; border:1px solid #e5b7b4; border-radius:6px; cursor:pointer;">
+                Delete
+            </button>
 
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">3</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">4</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">5</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">6</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">7</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color: black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">8</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">9</button>
-
-            <button style="height:52px; font-size:18px; font-weight:600; background:#f1f4f8; color:black; border:1px solid #d6dde7; border-radius:6px; cursor:pointer;">0</button>
-
-            <button style="height:52px; font-size:13px; font-weight:600; background:#fff0ef; color:#b3261e; border:1px solid #e5b7b4; border-radius:6px; cursor:pointer;">Delete</button>
-
-            <button style="height:52px; font-size:13px; font-weight:600; background:#14532D; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
+            <button id="enterBtn" type="button" style="height:52px; font-size:13px; font-weight:600; background:#14532d; color:white; border:none; border-radius:6px; cursor:pointer;">
+                Enter
+            </button>
 
         </div>
+
+        <p id="message" aria-live="polite" style="margin:15px 0; text-align:center; font-size:14px;"></p>
+
+        <button
+            id="backBtn"
+            type="button"
+            style="width:100%; padding:12px; background:#e8edf3; color:#14233a; border:none; border-radius:6px; cursor:pointer;"
+        >
+            Back to Menu
+        </button>
 
         <p style="margin:20px 0 0; text-align:center; font-size:12px; color:#7b8798;">
             Please verify the recipient's details before transferring.
@@ -70,23 +98,202 @@
 
     </div>
 
+    <style>
+        .key {
+            height: 52px;
+            font-size: 18px;
+            font-weight: 600;
+            background: #f1f4f8;
+            color: black;
+            border: 1px solid #d6dde7;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .key:hover {
+            background: #dfe7f0;
+        }
+    </style>
+
     <script>
-        const amountInput = document.getElementById("amount");
-        const transferInput = document.getElementById("transfer-amount");
-        const buttons = document.querySelectorAll("button");
+        // 1. Create the users if they do not already exist.
 
-        buttons.forEach(button => {
-            button.addEventListener("click", () => {
-                const value = button.innerText;
+        let users = JSON.parse(localStorage.getItem("atmUsers"));
 
-                if (value === "Delete") {
-                    amountInput.value = amountInput.value.slice(0, -1);
-                } else if (value === "Enter") {
-                    handleTransfer();
-                } else {
-                    amountInput.value += value;
+        if (!users) {
+            users = [
+                {
+                    name: "David",
+                    accountNumber: "1234567890",
+                    cardNumber: "1111222233334444",
+                    pin: "1234",
+                    balance: 50000
+                },
+                {
+                    name: "John",
+                    accountNumber: "0987654321",
+                    cardNumber: "5555666677778888",
+                    pin: "5678",
+                    balance: 30000
                 }
+            ];
+
+            localStorage.setItem("atmUsers", JSON.stringify(users));
+        }
+
+        // 2. Select HTML elements.
+
+        const accountNumberInput = document.getElementById("accountNumber");
+        const amountInput = document.getElementById("amount");
+        const accountName = document.getElementById("accountName");
+        const checkAccountBtn = document.getElementById("checkAccount");
+        const message = document.getElementById("message");
+        const enterBtn = document.getElementById("enterBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
+
+        const keypadButtons = document.querySelectorAll(".key");
+
+        // 3. Identify the sender.
+        // For now, David is the sender in this demonstration.
+
+        const senderCardNumber = "1111222233334444";
+
+        let receiver = null;
+        let verifiedAccountNumber = "";
+
+        // 4. Verify the recipient's account number.
+
+        checkAccountBtn.addEventListener("click", function () {
+            const accountNumber = accountNumberInput.value.trim();
+
+            receiver = null;
+            verifiedAccountNumber = "";
+            accountName.innerText = "";
+            amountInput.value = "";
+            message.innerText = "";
+
+            if (!/^\d{10}$/.test(accountNumber)) {
+                message.innerText = "Enter a valid 10-digit account number.";
+                return;
+            }
+
+            receiver = users.find(function (user) {
+                return user.accountNumber === accountNumber;
             });
+
+            if (!receiver) {
+                message.innerText = "Account not found!";
+                return;
+            }
+
+            const sender = users.find(function (user) {
+                return user.cardNumber === senderCardNumber;
+            });
+
+            if (!sender) {
+                receiver = null;
+                message.innerText = "Sender account not found.";
+                return;
+            }
+
+            if (sender.accountNumber === receiver.accountNumber) {
+                receiver = null;
+                message.innerText = "You cannot transfer to your own account.";
+                return;
+            }
+
+            verifiedAccountNumber = accountNumber;
+
+            accountName.innerText = "Account Name: " + receiver.name;
+            message.innerText = "Account verified successfully.";
+        });
+
+        // 5. Enter amounts using the keypad.
+
+        keypadButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (amountInput.value.length < 12) {
+                    amountInput.value += button.dataset.number;
+                }
+
+                message.innerText = "";
+            });
+        });
+
+        // 6. Delete the last digit.
+
+        deleteBtn.addEventListener("click", function () {
+            amountInput.value = amountInput.value.slice(0, -1);
+        });
+
+        // 7. Handle the transfer.
+
+        function handleTransfer() {
+            // Load the latest balances before transferring.
+
+            users = JSON.parse(localStorage.getItem("atmUsers")) || [];
+
+            const sender = users.find(function (user) {
+                return user.cardNumber === senderCardNumber;
+            });
+
+            receiver = users.find(function (user) {
+                return user.accountNumber === verifiedAccountNumber;
+            });
+
+            if (!sender || !receiver || !verifiedAccountNumber) {
+                message.innerText = "Please verify the recipient first.";
+                return;
+            }
+
+            if (accountNumberInput.value.trim() !== verifiedAccountNumber) {
+                message.innerText = "Please verify the account again.";
+                receiver = null;
+                verifiedAccountNumber = "";
+                accountName.innerText = "";
+                return;
+            }
+
+            const amount = Number(amountInput.value);
+
+            if (!Number.isSafeInteger(amount) || amount <= 0) {
+                message.innerText = "Enter a valid transfer amount.";
+                return;
+            }
+
+            if (amount > sender.balance) {
+                message.innerText = "Insufficient balance!";
+                return;
+            }
+
+            // Deduct money from the sender.
+
+            sender.balance -= amount;
+
+            // Add money to the receiver.
+
+            receiver.balance += amount;
+
+            // Save both updated balances.
+
+            localStorage.setItem("atmUsers", JSON.stringify(users));
+
+            // Show confirmation.
+
+            message.innerText =
+                "Transfer successful! ₦" +
+                amount.toLocaleString("en-NG") +
+                " sent to " + receiver.name + ".";
+
+            amountInput.value = "";
+        }
+
+        enterBtn.addEventListener("click", handleTransfer);
+
+        // 8. Return to the menu.
+
+        document.getElementById("backBtn").addEventListener("click", function () {
+            window.location.href = "menu.html";
         });
     </script>
 
