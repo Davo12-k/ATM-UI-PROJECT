@@ -51,6 +51,28 @@
 
 
     <script>
+        const withdrawAmountInput = document.getElementById('withdraw-amount');
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.textContent;
+
+                if (value === 'Enter') {
+                    const amount = parseFloat(withdrawAmountInput.value);
+                    if (!isNaN(amount) && amount > 0) {
+                        alert(`You have withdrawn ₦${amount.toFixed(2)}`);
+                        withdrawAmountInput.value = '';
+                    } else {
+                        alert('Please enter a valid amount to withdraw.');
+                    }
+                } else if (value === 'Delete') {
+                    withdrawAmountInput.value = withdrawAmountInput.value.slice(0, -1);
+                } else {
+                    withdrawAmountInput.value += value;
+                }
+            });
+        });
     
 
     </script>
