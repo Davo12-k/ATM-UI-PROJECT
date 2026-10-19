@@ -58,42 +58,6 @@
 
     </div>
 
-<<<<<<< HEAD
-    <script>
-        const amountInput = document.getElementById('amount');
-        const keypadButtons = document.querySelectorAll('.keypad button');
-        const deleteButton = keypadButtons[keypadButtons.length - 1];
-        const submitButton = document.querySelector('button[style*="Submit"]');
-
-        keypadButtons.forEach(button => {
-            if (button !== deleteButton) {
-                button.addEventListener('click', () => {
-                    amountInput.value += button.textContent;
-                });
-            }
-        });
-
-        deleteButton.addEventListener('click', () => {
-            amountInput.value = amountInput.value.slice(0, -1);
-        });
-
-        submitButton.addEventListener('click', () => {
-            const amount = parseFloat(amountInput.value);
-            if (isNaN(amount) || amount <= 0) {
-                alert('Please enter a valid amount.');
-                return;
-            }
-
-            let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-            transactions.push({ type: 'deposit', amount: amount, date: new Date().toISOString() });
-            localStorage.setItem('transactions', JSON.stringify(transactions));
-
-            alert(`Successfully deposited ₦${amount.toFixed(2)}.`);
-            window.location.href = 'transaction_history.html';
-        });
-    </script>
-
-=======
     
         
 <script>
@@ -177,6 +141,5 @@ amountInput.value = "";
 });
 
 </script>
->>>>>>> 95de6011a18a7b3bf91a0361c0702d8fbab5bbed
 </body>
 </html>

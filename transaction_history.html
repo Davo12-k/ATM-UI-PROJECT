@@ -50,34 +50,10 @@
 
     </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 95de6011a18a7b3bf91a0361c0702d8fbab5bbed
     <script>
         const balanceDisplay = document.getElementById('balanceDisplay');
         const transactionList = document.getElementById('transactionList');
 
-<<<<<<< HEAD
-        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-        const balance = transactions.reduce((acc, txn) => acc + txn.amount, 0);
-
-        balanceDisplay.textContent = `₦${balance.toFixed(2)}`;
-
-        if (transactions.length === 0) {
-            transactionList.innerHTML = '<p style="text-align: center; color: #64748b;">No transactions found.</p>';
-        } else {
-            transactionList.innerHTML = transactions.map(txn => `
-                <div style="border-bottom: 1px solid #e5e7eb; padding: 10px 0;">
-                    <p style="margin: 0; font-size: 14px; color: #64748b;">
-                        ${txn.date} - ${txn.type}
-                    </p>
-                    <p style="margin: 0; font-size: 16px; color: ${txn.amount >= 0 ? 'green' : 'red'};">
-                        ${txn.amount >= 0 ? '+' : '-'}₦${Math.abs(txn.amount).toFixed(2)}
-                    </p>
-                </div>
-            `).join('');
-=======
         // Fetch the balance and transactions from localStorage
         const balance = localStorage.getItem('accountBalance') || 0;
         const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -109,7 +85,6 @@
                 transactionDiv.appendChild(amountDiv);
                 transactionList.appendChild(transactionDiv);
             });
->>>>>>> 95de6011a18a7b3bf91a0361c0702d8fbab5bbed
         }
     </script>
 
