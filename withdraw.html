@@ -51,6 +51,53 @@
 
 
     <script>
+        const withdrawAmountInput = document.getElementById('withdraw-amount');
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.textContent;
+
+                if (value === 'Enter') {
+                    handleWithdrawal();
+                } else if (value === 'Delete') {
+                    withdrawAmountInput.value = withdrawAmountInput.value.slice(0, -1);
+                } else {
+                    withdrawAmountInput.value += value;
+                }
+            });
+        });
+
+        function handleWithdrawal() {
+            const amount = parseFloat(withdrawAmountInput.value);
+
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid withdrawal amount.');
+                return;
+            }
+
+            let balance = parseFloat(localStorage.getItem('balance')) || 0;
+
+            if (amount > balance) {
+                alert('Insufficient funds for this withdrawal.');
+                return;
+            }
+
+            balance -= amount;
+            localStorage.setItem('balance', balance.toString());
+
+            let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+            transactions.push({
+                type: 'Withdrawal',
+                amount: amount,
+                date: new Date().toLocaleString()
+            });
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+
+            alert(`Withdrawal successful!\nAmount: ₦${amount.toLocaleString()}\nNew Balance: ₦${balance.toLocaleString()}`);
+            withdrawAmountInput.value = '';
+        }
+        
     
 
     </script>

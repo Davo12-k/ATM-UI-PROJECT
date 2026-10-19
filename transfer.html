@@ -70,5 +70,25 @@
 
     </div>
 
+    <script>
+        const amountInput = document.getElementById("amount");
+        const transferInput = document.getElementById("transfer-amount");
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const value = button.innerText;
+
+                if (value === "Delete") {
+                    amountInput.value = amountInput.value.slice(0, -1);
+                } else if (value === "Enter") {
+                    handleTransfer();
+                } else {
+                    amountInput.value += value;
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
