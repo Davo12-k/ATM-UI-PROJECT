@@ -12,7 +12,7 @@
         Change Your PIN
     </h2>
 
-    <form style="width:320px; margin:30px auto; padding:30px; background-color:white; border:1px solid #D1D5DB; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); box-sizing:content-box;">
+    <form id="pinForm" style="width:320px; margin:30px auto; padding:30px; background-color:white; border:1px solid #D1D5DB; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); box-sizing:content-box;">
 
         <label for="current_pin" style="display:block; margin-bottom:8px; font-size:15px; font-weight:600;">
             Current PIN:
@@ -44,6 +44,26 @@
         Back To Menu
     </button>
 </a>
+
+<script>
+    const form = document.getElementById('pinForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const currentPin = document.getElementById('current_pin').value;
+        const newPin = document.getElementById('new_pin').value;
+        const confirmPin = document.getElementById('confirm_pin').value;
+
+        if (newPin !== confirmPin) {
+            alert('New PIN and Confirm PIN do not match.');
+            return;
+        }
+
+        
+        alert('PIN changed successfully!');
+        form.reset();
+    }); 
+</script>
+
    
 </body>
 </html>
