@@ -48,7 +48,7 @@
 
         </div>
 
-        <button style="width:100%; padding:14px; font-size:16px; font-weight:600; color:#ffffff; background:forestgreen; border:none; border-radius:7px; cursor:pointer; margin-top:3px;">
+        <button id="submitDeposit" style="width:100%; padding:14px; font-size:16px; font-weight:600; color:#ffffff; background:forestgreen; border:none; border-radius:7px; cursor:pointer; margin-top:3px;">
             Submit
         </button>
 
@@ -61,23 +61,85 @@
     
         
 <script>
-const amountInput = document.getElementById('amount');
-        const keypadButtons = document.querySelectorAll('.keypad button');
+    const amountInput = document.getElementById("amount");
+const keypadButtons = document.querySelectorAll(".keypad button");
+const submitButton = document.getElementById("submitDeposit");
 
-        keypadButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const value = button.textContent;
-                if (value === 'Delete') {
-                    amountInput.value = amountInput.value.slice(0, -1);
-                } else {
-                    amountInput.value += value;
-                }
 
-                
-            });
-        });
+keypadButtons.forEach(button => {
+button.addEventListener("click", () => {
+const digit = button.innerText;
 
-        
+    if (digit === "Delete") {
+        amountInput.value = amountInput.value.slice(0, -1);
+    } else if (amountInput.value.length < 12) {
+        amountInput.value += digit;
+    }
+});
+
+
+});
+
+
+submitButton.addEventListener("click", () => {
+const depositAmount = Number(amountInput.value);
+
+
+if (
+    amountInput.value.trim() === "" ||
+    !Number.isSafeInteger(depositAmount) ||
+    depositAmount <= 0
+) {
+    alert("Please enter a valid deposit amount.");
+    return;
+}
+
+let balance = Number(localStorage.getItem("balance") ?? 50000);
+
+if (
+    !Number.isSafeInteger(balance) ||
+    balance < 0 ||
+    balance + depositAmount > Number.MAX_SAFE_INTEGER
+) {
+    alert("Unable to process deposit.");
+    return;
+}
+
+
+balance += depositAmount;
+
+localStorage.setItem("balance", balance);
+
+
+let transactions = JSON.parse(
+    localStorage.getItem("transactions") || "[]"
+);
+
+
+transactions.push({
+    type: "Deposit",
+    amount: depositAmount,
+    date: new Date().toLocaleString()
+});
+
+
+localStorage.setItem(
+    "transactions",
+    JSON.stringify(transactions)
+);
+
+
+alert(
+    "Deposit successful!\n" +
+    "Amount: ₦" + depositAmount.toLocaleString() + "\n" +
+    "New Balance: ₦" + balance.toLocaleString()
+);
+
+
+amountInput.value = "";
+
+});
+
 </script>
 </body>
 </html>

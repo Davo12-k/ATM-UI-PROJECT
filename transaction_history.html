@@ -50,6 +50,45 @@
 
     </div>
 
+
+    <script>
+        const balanceDisplay = document.getElementById('balanceDisplay');
+        const transactionList = document.getElementById('transactionList');
+
+        // Fetch the balance and transactions from localStorage
+        const balance = localStorage.getItem('accountBalance') || 0;
+        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+        // Update the balance display
+        balanceDisplay.textContent = `₦${parseFloat(balance).toFixed(2)}`;
+
+        // Display the transactions
+        if (transactions.length === 0) {
+            transactionList.innerHTML = '<p style="text-align: center; color: #64748b;">No transactions found.</p>';
+        } else {
+            transactionList.innerHTML = '';
+            transactions.forEach((transaction, index) => {
+                const transactionDiv = document.createElement('div');
+                transactionDiv.style.padding = '10px';
+                transactionDiv.style.borderBottom = '1px solid #e5e7eb';
+                transactionDiv.style.display = 'flex';
+                transactionDiv.style.justifyContent = 'space-between';
+                transactionDiv.style.alignItems = 'center';
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.innerHTML = `<strong>${transaction.type}</strong><br><span style="font-size: 12px; color: #64748b;">${transaction.date}</span>`;
+
+                const amountDiv = document.createElement('div');
+                amountDiv.textContent = `₦${parseFloat(transaction.amount).toFixed(2)}`;
+                amountDiv.style.color = transaction.type === 'Deposit' ? 'green' : 'red';
+
+                transactionDiv.appendChild(detailsDiv);
+                transactionDiv.appendChild(amountDiv);
+                transactionList.appendChild(transactionDiv);
+            });
+        }
+    </script>
+
     
 </body>
 </html>
