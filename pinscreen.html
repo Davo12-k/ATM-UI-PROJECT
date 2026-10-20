@@ -67,32 +67,7 @@
 
     
 <script>
-    let users = JSON.parse(localStorage.getItem("users"));
-
-    if (!users || users.length === 0) {
-        users = [
-            {
-                accountNumber: "0123456789",
-                accountType: "Savings Account",
-                pin: "1234"
-            
-            },
-            {
-                accountNumber: "0987654321",
-                accountType: "Current Account",
-                pin: "5678"
-
-            },
-            {
-                accountNumber: "0112233445",
-                accountType: "Savings Account",
-                pin: "9012"
-            }
-        ];
-
-        localStorage.setItem("users", JSON.stringify(users));
-    }
-
+   
     function digitPin(digit) {
         let pinInput = document.getElementById("pin");
 

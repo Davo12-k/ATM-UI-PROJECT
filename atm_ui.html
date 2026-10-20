@@ -1,6 +1,5 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<ht lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,10 +132,6 @@
 
     <script>
 
-        // ========================================
-        // 1. CREATE THE USERS DATABASE
-        // ========================================
-
         let users = JSON.parse(localStorage.getItem("atmUsers"));
 
         if (!users) {
@@ -169,11 +164,6 @@
             );
         }
 
-
-        // ========================================
-        // 2. SAVE THE USERS
-        // ========================================
-
         function saveUsers() {
 
             localStorage.setItem(
@@ -182,11 +172,6 @@
             );
 
         }
-
-
-        // ========================================
-        // 3. GET THE CURRENT USER
-        // ========================================
 
         function getCurrentUser() {
 
@@ -200,11 +185,6 @@
             });
 
         }
-
-
-        // ========================================
-        // 4. SELECT A CARD
-        // ========================================
 
         function insertCard(cardNumber) {
 
@@ -233,9 +213,6 @@
         }
 
 
-        // ========================================
-        // 5. CANCEL CARD SELECTION
-        // ========================================
 
         function cancelSelection() {
 
@@ -249,4 +226,3 @@
 
 </body>
 </html>
-```
