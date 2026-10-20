@@ -3,100 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIN Screen</title>
+    <title>ATM PIN Screen</title>
 </head>
-<body style="margin:0; font-family:Arial, sans-serif; background-color:#f1f4f8;">
 
-    <div class="pin-container" style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:20px;">
+<body style="margin:0; font-family:Arial, sans-serif; background-color:#F8FAF8; color:#1F2937;">
 
-        <div style="background-color:white; padding:35px 30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); text-align:center; width:250px;">
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh;">
 
-            <div>
-           <div>
-            <img src="" alt="">
-           </div>
-        <div>
-            <h3>ATM CUSTOMER</h3>
-            <p>Account information</p>
-        </div>
-          <hr>
-         <p>3459********7894</p>
-          <p>Current Account</p>
-          <hr>
-        </div>
-  
-            <h2 style="margin:0 0 10px; color:#172b4d; font-size:24px;">Enter Your PIN</h2>
+           
 
-        
+            <h3 style="margin:0 0 10px; color:#14532D; font-size:20px;">
+                Enter Your PIN
+            </h3>
 
-            <input id="pin" type="password" maxlength="4" placeholder="••••"
-                style="padding:14px; font-size:20px; width:180px; text-align:center; border:1px solid #ccd2dc; border-radius:6px; outline:none; box-sizing:border-box; letter-spacing:8px;">
+            <p style="font-size:14px; color:#666; margin-bottom:20px;">
+                Enter your 4-digit ATM PIN
+            </p>
 
-            <div class="keypad" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:200px; margin:25px auto 0;">
+            <input
+                id="pin"
+                type="password"
+                maxlength="4"
+                inputmode="numeric"
+                placeholder="••••"
+                style="padding:14px; font-size:20px; width:180px; text-align:center; border:1px solid #CCD2DC; border-radius:6px; outline-color:#14532D; box-sizing:border-box; letter-spacing:8px;"
+            >
 
-                <button onclick="digitPin('1')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">1</button>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:200px; margin:25px auto 0;">
 
-                <button onclick="digitPin('2')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">2</button>
+                <button onclick="digitPin('1')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">1</button>
 
-                <button onclick="digitPin('3')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">3</button>
+                <button onclick="digitPin('2')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">2</button>
 
-                <button onclick="digitPin('4')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">4</button>
+                <button onclick="digitPin('3')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">3</button>
 
-                <button onclick="digitPin('5')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">5</button>
+                <button onclick="digitPin('4')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">4</button>
 
-                <button onclick="digitPin('6')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">6</button>
+                <button onclick="digitPin('5')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">5</button>
 
-                <button onclick="digitPin('7')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">7</button>
+                <button onclick="digitPin('6')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">6</button>
 
-                <button onclick="digitPin('8')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">8</button>
+                <button onclick="digitPin('7')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">7</button>
 
-                <button onclick="digitPin('9')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">9</button>
+                <button onclick="digitPin('8')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">8</button>
 
-                <button onclick="clearPin()" style="padding:15px 5px; font-size:13px; font-weight:bold; background-color:#b3261e; color:white; border:none; border-radius:6px; cursor:pointer;">Clear</button>
+                <button onclick="digitPin('9')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">9</button>
 
-                <button onclick="digitPin('0')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#f1f4f8; border:1px solid #d8dee8; border-radius:6px; cursor:pointer;">0</button>
+                <button onclick="clearPin()" style="padding:12px 3px; font-size:12px; font-weight:bold; background-color:#B3261E; color:white; border:none; border-radius:6px; cursor:pointer;">Clear</button>
 
-                  
-              <button onclick="enterPin()" style="padding:19px 25px; font-size:16px; font-weight:bold; background-color:green; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
+                <button onclick="digitPin('0')" style="padding:15px; font-size:18px; font-weight:bold; background-color:#F1F4F8; border:1px solid #D8DEE8; border-radius:6px; cursor:pointer;">0</button>
+
+                <button onclick="enterPin()" style="padding:12px 3px; font-size:13px; font-weight:bold; background-color:#14532D; color:white; border:none; border-radius:6px; cursor:pointer;">Enter</button>
 
             </div>
+
+            <p style="font-size:12px; color:#777; margin-top:20px;">
+                Keep your PIN private.
+            </p>
+
         </div>
+
     </div>
 
-
-
-
-
     <script>
-        
-digitPin = (digit) => {
-    const pinInput = document.getElementById('pin');
+        let users = JSON.parse(localStorage.getItem("users"));
 
-    if (pinInput.value.length < 4) {
-        pinInput.value += digit;
-    }
-}
+        if (!users) {
+            users = [
+                {
+                    accountNumber: "0123456789",
+                    accountType: "Savings Account",
+                    pin: "1234"
+                },
+                {
+                    accountNumber: "0987654321",
+                    accountType: "Current Account",
+                    pin: "5678"
+                },
+                {
+                    accountNumber: "0112233445",
+                    accountType: "Savings Account",
+                    pin: "9012"
+                }
+            ];
 
-clearPin = () => {
-    document.getElementById('pin').value = '';
-}
+            localStorage.setItem("users", JSON.stringify(users));
+        }
 
-enterPin = () => {
-    if (document.getElementById('pin').value === '1234') {
-        alert('PIN correct! Welcome.');
+        digitPin = (digit) => {
+            if (document.getElementById("pin").value.length < 4) {
+                document.getElementById("pin").value += digit;
+            }
+        };
 
-        window.location.href = 'menu.html';
-    } else {
-        alert('Incorrect PIN. Please try again.');
+        clearPin = () => {
+            document.getElementById("pin").value = "";
+            document.getElementById("accountNumber").textContent = "Not identified";
+            document.getElementById("accountType").textContent = "Not identified";
+        };
 
-        document.getElementById('pin').value = '';
-    }
-}
+        enterPin = () => {
+            let enteredPin = document.getElementById("pin").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let user = users.find(function(user) {
+                return user.pin === enteredPin;
+            });
+
+            if (user) {
+                localStorage.setItem("currentUser", JSON.stringify(user));
+
+                document.getElementById("accountNumber").textContent =
+                    "******" + user.accountNumber.slice(-4);
+
+                document.getElementById("accountType").textContent =
+                    user.accountType;
+
+                alert("PIN correct! Welcome.");
+
+                window.location.href = "menu.html";
+            } else {
+                alert("Incorrect PIN. Please try again.");
+
+                document.getElementById("pin").value = "";
+            }
+        };
     </script>
-
-
-
-    
 
 </body>
 </html>
