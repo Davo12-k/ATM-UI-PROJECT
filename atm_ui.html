@@ -1,52 +1,252 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATM UI</title>
+    <title>D&Q BANK - ATM Card Selection</title>
 </head>
 
-<body style="background-color: #f1f5f9; font-family: Arial, sans-serif; text-align: center; padding: 50px; margin: 0; min-height: 100vh; box-sizing: border-box;">
+<body style="
+    background-color: #f1f5f9;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px 15px;
+    margin: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+">
 
-    <h1 style="font-size: 42px; color: #0f172a; margin-bottom: 30px; letter-spacing: 2px;">
+    <h1 style="
+        font-size: 42px;
+        color: #0f172a;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+    ">
         D&Q BANK
     </h1>
 
-    <div style="background-color: white; max-width: 550px; margin: 0 auto; padding: 40px 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+    <div style="
+        background-color: white;
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 35px 25px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+        box-sizing: border-box;
+    ">
 
-        <h3 style="font-size: 26px; color: #0f172a; margin-bottom: 20px;">
-            Welcome to our ATM
-        </h3>
+        <h2 style="
+            font-size: 26px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        ">
+            Welcome to Our ATM
+        </h2>
 
-        <section>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+        <p style="
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 25px;
+        ">
+            Please select your card to continue.
+        </p>
 
-                <img style="width: 200px; height: 30vh;" src="https://png.pngtree.com/png-clipart/20221110/original/pngtree-atm-card-logo-design-template-vector-picture-image_3607304.png" alt="">
-            </div>
-        </section>
+        <!-- ATM CARD IMAGE -->
+        <div style="margin-bottom: 25px;">
 
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-
-            <button style="padding: 13px 28px; font-size: 16px; font-weight: bold; color: #b91c1c; background-color: #fee2e2; border: none; border-radius: 8px; cursor: pointer;">
-                Cancel
-            </button>
-
-           <a href="pinscreen.html" style="text-decoration: none;">
-                <button style="padding: 13px 28px; font-size: 16px; font-weight: bold; color: white; background-color: #15803d; border: none; border-radius: 8px; cursor: pointer;">
-                    Proceed
-                </button>
-            </a>
+            <img
+                src="https://png.pngtree.com/png-clipart/20221110/original/pngtree-atm-card-logo-design-template-vector-picture-image_3607304.png"
+                alt="ATM card illustration"
+                style="
+                    width: 200px;
+                    max-width: 100%;
+                    height: auto;
+                "
+            >
 
         </div>
 
+        <!-- CARD SELECTION BUTTONS -->
+        <div style="
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        ">
+
+            <button
+                onclick="insertCard('1111222233334444')"
+                style="
+                    padding: 14px 22px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                    background-color: #1d4ed8;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                "
+            >
+                David's Card
+            </button>
+
+            <button
+                onclick="insertCard('5555666677778888')"
+                style="
+                    padding: 14px 22px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                    background-color: #15803d;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                "
+            >
+                Qodri's Card
+            </button>
+
+        </div>
+
+        <!-- CANCEL BUTTON -->
+        <button
+            onclick="cancelSelection()"
+            style="
+                padding: 13px 28px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #b91c1c;
+                background-color: #fee2e2;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            "
+        >
+            Cancel
+        </button>
+
     </div>
+
 
     <script>
 
-      
-    </script>
+        // ========================================
+        // 1. CREATE THE USERS DATABASE
+        // ========================================
 
-    
+        let users = JSON.parse(localStorage.getItem("atmUsers"));
+
+        if (!users) {
+
+            users = [
+                {
+                    name: "David",
+                    cardNumber: "1111222233334444",
+                    pin: "1234",
+                    accountNumber: "1234567890",
+                    balance: 50000,
+                    transactions: [],
+                    accountType: "savings"
+                },
+
+                {
+                    name: "Qodri",
+                    cardNumber: "5555666677778888",
+                    pin: "5678",
+                    accountNumber: "9876543210",
+                    balance: 70000,
+                    transactions: [],
+                    accountType: "current"
+                }
+            ];
+
+            localStorage.setItem(
+                "atmUsers",
+                JSON.stringify(users)
+            );
+        }
+
+
+        // ========================================
+        // 2. SAVE THE USERS
+        // ========================================
+
+        function saveUsers() {
+
+            localStorage.setItem(
+                "atmUsers",
+                JSON.stringify(users)
+            );
+
+        }
+
+
+        // ========================================
+        // 3. GET THE CURRENT USER
+        // ========================================
+
+        function getCurrentUser() {
+
+            const accountNumber =
+                localStorage.getItem("currentAccount");
+
+            return users.find(function(user) {
+
+                return user.accountNumber === accountNumber;
+
+            });
+
+        }
+
+
+        // ========================================
+        // 4. SELECT A CARD
+        // ========================================
+
+        function insertCard(cardNumber) {
+
+            const user = users.find(function(user) {
+
+                return user.cardNumber === cardNumber;
+
+            });
+
+            if (!user) {
+
+                alert("Invalid card number!");
+                return;
+
+            }
+
+            localStorage.setItem(
+                "currentAccount",
+                user.accountNumber
+            );
+
+            alert("Welcome " + user.name + "!");
+
+            window.location.href = "pinscreen.html";
+
+        }
+
+
+        // ========================================
+        // 5. CANCEL CARD SELECTION
+        // ========================================
+
+        function cancelSelection() {
+
+            localStorage.removeItem("currentAccount");
+
+            alert("Card selection cancelled.");
+ 
+        }
+
+    </script>
 
 </body>
 </html>
+```
