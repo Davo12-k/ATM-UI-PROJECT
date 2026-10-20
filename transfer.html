@@ -116,6 +116,201 @@
 
     <script>
         
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+let recipient = null;
+
+const accountNumber = document.getElementById("accountNumber");
+const checkAccount = document.getElementById("checkAccount");
+const accountName = document.getElementById("accountName");
+const amount = document.getElementById("amount");
+const message = document.getElementById("message");
+const deleteBtn = document.getElementById("deleteBtn");
+const enterBtn = document.getElementById("enterBtn");
+const backBtn = document.getElementById("backBtn");
+
+// Check that a user is logged in
+if (!currentUser) {
+    message.textContent = "Please log in through the PIN screen first.";
+    message.style.color = "#b3261e";
+}
+
+// Verify recipient account
+checkAccount.addEventListener("click", function () {
+    let enteredAccount = accountNumber.value.trim();
+
+    recipient = null;
+    amount.value = "";
+    accountName.textContent = "";
+
+    if (!/^\d{10}$/.test(enteredAccount)) {
+        message.textContent = "Enter a valid 10-digit account number.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    if (!currentUser) {
+        message.textContent = "Please log in first.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    if (enteredAccount === currentUser.accountNumber) {
+        message.textContent = "You cannot transfer money to yourself.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    recipient = users.find(function (user) {
+        return user.accountNumber === enteredAccount;
+    });
+
+    if (recipient) {
+        accountName.textContent = "Account name: " + recipient.name;
+        accountName.style.color = "#14532d";
+
+        message.textContent = "Account verified successfully.";
+        message.style.color = "#14532d";
+    } else {
+        message.textContent = "Account not found.";
+        message.style.color = "#b3261e";
+    }
+});
+
+// Clear recipient verification if account number changes
+accountNumber.addEventListener("input", function () {
+    recipient = null;
+    accountName.textContent = "";
+    amount.value = "";
+    message.textContent = "";
+});
+
+// Number keypad
+document.querySelectorAll(".key").forEach(function (button) {
+    button.addEventListener("click", function () {
+        if (!recipient) {
+            message.textContent = "Verify the recipient first.";
+            message.style.color = "#b3261e";
+            return;
+        }
+
+        amount.value += button.dataset.number;
+        message.textContent = "";
+    });
+});
+
+// Delete the last digit
+deleteBtn.addEventListener("click", function () {
+    amount.value = amount.value.slice(0, -1);
+});
+
+// Enter and transfer money
+enterBtn.addEventListener("click", function () {
+    if (!currentUser) {
+        message.textContent = "Please log in first.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    if (!recipient) {
+        message.textContent = "Please verify the recipient first.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    let transferAmount = Number(amount.value);
+
+    if (!Number.isSafeInteger(transferAmount) || transferAmount <= 0) {
+        message.textContent = "Enter a valid transfer amount.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    // Find the latest sender and recipient records
+    let senderIndex = users.findIndex(function (user) {
+        return user.accountNumber === currentUser.accountNumber;
+    });
+
+    let recipientIndex = users.findIndex(function (user) {
+        return user.accountNumber === recipient.accountNumber;
+    });
+
+    if (senderIndex === -1 || recipientIndex === -1) {
+        message.textContent = "Account details could not be found.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    let sender = users[senderIndex];
+    let receiver = users[recipientIndex];
+
+    if (sender.accountNumber === receiver.accountNumber) {
+        message.textContent = "You cannot transfer money to yourself.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    if (
+        typeof sender.balance !== "number" ||
+        !Number.isFinite(sender.balance) ||
+        sender.balance < 0
+    ) {
+        message.textContent = "Your account balance is invalid.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    if (transferAmount > sender.balance) {
+        message.textContent = "Insufficient funds.";
+        message.style.color = "#b3261e";
+        return;
+    }
+
+    // Update both balances
+    sender.balance -= transferAmount;
+    receiver.balance += transferAmount;
+
+    // Save updated users
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Update the logged-in user's information
+    currentUser = sender;
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+    // Save transaction history
+    let transactions =
+        JSON.parse(localStorage.getItem("transactions")) || [];
+
+    transactions.push({
+        type: "transfer",
+        amount: transferAmount,
+        senderAccount: sender.accountNumber,
+        recipientAccount: receiver.accountNumber,
+        recipientName: receiver.name,
+        date: new Date().toISOString()
+    });
+
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+
+    message.textContent =
+        "Transfer successful! New balance: ₦" +
+        sender.balance.toLocaleString("en-NG");
+
+    message.style.color = "#14532d";
+
+    amount.value = "";
+    accountNumber.value = "";
+    accountName.textContent = "";
+    recipient = null;
+});
+
+// Return to menu
+backBtn.addEventListener("click", function () {
+    window.location.href = "menu.html";
+});
+
+        
     </script>
     
 

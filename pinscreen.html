@@ -65,71 +65,69 @@
 
     </div>
 
-    <script>
-        let users = JSON.parse(localStorage.getItem("users"));
+    
+<script>
+    let users = JSON.parse(localStorage.getItem("users"));
 
-        if (!users) {
-            users = [
-                {
-                    accountNumber: "0123456789",
-                    accountType: "Savings Account",
-                    pin: "1234"
-                },
-                {
-                    accountNumber: "0987654321",
-                    accountType: "Current Account",
-                    pin: "5678"
-                },
-                {
-                    accountNumber: "0112233445",
-                    accountType: "Savings Account",
-                    pin: "9012"
-                }
-            ];
+    if (!users || users.length === 0) {
+        users = [
+            {
+                accountNumber: "0123456789",
+                accountType: "Savings Account",
+                pin: "1234"
+            
+            },
+            {
+                accountNumber: "0987654321",
+                accountType: "Current Account",
+                pin: "5678"
 
-            localStorage.setItem("users", JSON.stringify(users));
+            },
+            {
+                accountNumber: "0112233445",
+                accountType: "Savings Account",
+                pin: "9012"
+            }
+        ];
+
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function digitPin(digit) {
+        let pinInput = document.getElementById("pin");
+
+        if (pinInput.value.length < 4) {
+            pinInput.value += digit;
+        }
+    }
+
+    function clearPin() {
+        document.getElementById("pin").value = "";
+    }
+
+    function enterPin() {
+        let enteredPin = document.getElementById("pin").value;
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        if (enteredPin.length !== 4) {
+            alert("Please enter your 4-digit PIN.");
+            return;
         }
 
-        digitPin = (digit) => {
-            if (document.getElementById("pin").value.length < 4) {
-                document.getElementById("pin").value += digit;
-            }
-        };
+        let user = users.find(function(user) {
+            return user.pin === enteredPin;
+        });
 
-        clearPin = () => {
+        if (user) {
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            window.location.href = "menu.html";
+        } else {
+            alert("Incorrect PIN. Please try again.");
             document.getElementById("pin").value = "";
-            document.getElementById("accountNumber").textContent = "Not identified";
-            document.getElementById("accountType").textContent = "Not identified";
-        };
+        }
+    }
+</script>
 
-        enterPin = () => {
-            let enteredPin = document.getElementById("pin").value;
-
-            let users = JSON.parse(localStorage.getItem("users")) || [];
-
-            let user = users.find(function(user) {
-                return user.pin === enteredPin;
-            });
-
-            if (user) {
-                localStorage.setItem("currentUser", JSON.stringify(user));
-
-                document.getElementById("accountNumber").textContent =
-                    "******" + user.accountNumber.slice(-4);
-
-                document.getElementById("accountType").textContent =
-                    user.accountType;
-
-                alert("PIN correct! Welcome.");
-
-                window.location.href = "menu.html";
-            } else {
-                alert("Incorrect PIN. Please try again.");
-
-                document.getElementById("pin").value = "";
-            }
-        };
-    </script>
 
 </body>
 </html>
