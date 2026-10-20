@@ -46,13 +46,13 @@ style="width:100%; padding:14px; background-color:#14532D; color:white; border:n
 
 <script>
 const form = document.getElementById('pinForm');
- form.addEventListener('submit', function(*event*) {
-*event*.preventDefault();
+ form.addEventListener('submit', function(event) {
+event.preventDefault();
 const currentPin = document.getElementById('current_pin').value;
 const newPin = document.getElementById('new_pin').value;
  const confirmPin = document.getElementById('confirm_pin').value;
 
- (newPin !== confirmPin) {
+ if (newPin !== confirmPin) {
  alert('New PIN and Confirm PIN do not match.');
  return;
  }
