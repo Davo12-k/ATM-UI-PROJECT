@@ -52,7 +52,7 @@
             Please select your card to continue.
         </p>
 
-       
+        <!-- ATM CARD IMAGE -->
         <div style="margin-bottom: 25px;">
 
             <img
@@ -132,7 +132,7 @@
 
     <script>
 
-        let users = JSON.parse(localStorage.getItem("atmUserss"));
+        let users = JSON.parse(localStorage.getItem("atmUsers"));
 
         if (!users) {
 
@@ -159,7 +159,7 @@
             ];
 
             localStorage.setItem(
-                "atmUserss",
+                "atmUsers",
                 JSON.stringify(users)
             );
         }
@@ -167,7 +167,7 @@
         function saveUsers() {
 
             localStorage.setItem(
-                "atmUserss",
+                "atmUsers",
                 JSON.stringify(users)
             );
 
