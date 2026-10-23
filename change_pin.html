@@ -45,23 +45,68 @@ style="width:100%; padding:14px; background-color:#14532D; color:white; border:n
 </a>
 
 <script>
-const form = document.getElementById('pinForm');
- form.addEventListener('submit', function(event) {
-event.preventDefault();
-const currentPin = document.getElementById('current_pin').value;
-const newPin = document.getElementById('new_pin').value;
- const confirmPin = document.getElementById('confirm_pin').value;
+    
+    const form = document.getElementById('pinForm');
 
- if (newPin !== confirmPin) {
- alert('New PIN and Confirm PIN do not match.');
- return;
- }
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
+        const currentPin = document.getElementById('current_pin').value;
+        const newPin = document.getElementById('new_pin').value;
+        const confirmPin = document.getElementById('confirm_pin').value;
 
- alert('PIN changed successfully!');
-form.reset();
-});
-</script> 
+        // Get all ATM users
+        const users = JSON.parse(localStorage.getItem('atmUsers')) || [];
+
+        // Get the currently selected account number
+        const accountNumber = localStorage.getItem('currentAccount');
+
+        // Find the selected user
+        const user = users.find(function(user) {
+            return user.accountNumber === accountNumber;
+        });
+
+        // Check whether the account exists
+        if (!user) {
+            alert('Account not found. Please select your card again.');
+            return;
+        }
+
+        // Check the current PIN
+        if (String(user.pin) !== currentPin) {
+            alert('Your current PIN is incorrect.');
+            return;
+        }
+
+        // Make sure the new PIN contains four digits
+        if (!/^\d{4}$/.test(newPin)) {
+            alert('Your new PIN must contain exactly 4 digits.');
+            return;
+        }
+
+        // Check whether the new PINs match
+        if (newPin !== confirmPin) {
+            alert('New PIN and Confirm PIN do not match.');
+            return;
+        }
+
+        // Prevent using the same PIN
+        if (newPin === currentPin) {
+            alert('Your new PIN must be different from your current PIN.');
+            return;
+        }
+
+        // Change the PIN
+        user.pin = newPin;
+
+        // Save the updated users
+        localStorage.setItem('atmUsers', JSON.stringify(users));
+
+        alert('PIN changed successfully!');
+
+        form.reset();
+    });
+</script>
 
 
 </body>
