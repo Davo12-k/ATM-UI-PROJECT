@@ -137,73 +137,74 @@
 
     </div>
 
-    <script src="./atm.js"></script>
+    <script>
+       
+        // 1. GET THE USERS FROM LOCAL STORAGE
+        // ========================================
 
-        // // ========================================
-        // // 1. GET THE USERS FROM LOCAL STORAGE
-        // // ========================================
-
-        // const users = JSON.parse(localStorage.getItem("atmUsers")) || [];
-
-
-        // // ========================================
-        // // 2. GET THE CURRENT USER
-        // // ========================================
-
-        // function getCurrentUser() {
-
-        //     const accountNumber = localStorage.getItem("currentAccount");
-
-        //     return users.find(function(user) {
-        //         return user.accountNumber === accountNumber;
-        //     });
-
-        // }
+        const users = JSON.parse(localStorage.getItem("atmUsers")) || [];
 
 
-        // // ========================================
-        // // 3. DISPLAY ACCOUNT BALANCE
-        // // ========================================
+        // ========================================
+        // 2. GET THE CURRENT USER
+        // ========================================
 
-        // function updateBalance() {
+        function getCurrentUser() {
 
-        //     const user = getCurrentUser();
+            const accountNumber = localStorage.getItem("currentAccount");
 
-        //     if (!user) {
-        //         alert("Please select your card first.");
-        //         window.location.href = "atm_ui.html";
-        //         return;
-        //     }
+            return users.find(function(user) {
+                return user.accountNumber === accountNumber;
+            });
 
-        //     const balanceDisplay = document.getElementById("balance");
-
-        //     const accountNameDisplay = document.getElementById("accountName");
+        }
 
 
-        //     // DISPLAY THE BALANCE
+        // ========================================
+        // 3. DISPLAY ACCOUNT BALANCE
+        // ========================================
 
-        //     if (balanceDisplay) {
-        //         balanceDisplay.innerText =
-        //             "₦" + Number(user.balance).toLocaleString("en-NG");
-        //     }
+        function updateBalance() {
+
+            const user = getCurrentUser();
+
+            if (!user) {
+                alert("Please select your card first.");
+                window.location.href = "atm_ui.html";
+                return;
+            }
+
+            const balanceDisplay = document.getElementById("balance");
+
+            const accountNameDisplay = document.getElementById("accountName");
 
 
-        //     // DISPLAY THE USER'S NAME
+            // DISPLAY THE BALANCE
 
-        //     if (accountNameDisplay) {
-        //         accountNameDisplay.innerText = user.name;
-        //     }
+            if (balanceDisplay) {
+                balanceDisplay.innerText =
+                    "₦" + Number(user.balance).toLocaleString("en-NG");
+            }
 
-        // }
+
+            // DISPLAY THE USER'S NAME
+
+            if (accountNameDisplay) {
+                accountNameDisplay.innerText = user.name;
+            }
+
+        }
 
 
-        // // ========================================
-        // // 4. RUN THE FUNCTION
-        // // ========================================
+        // ========================================
+        // 4. RUN THE FUNCTION
+        // ========================================
 
-        // updateBalance();
+        updateBalance()
 
-    
+</script>
+
+        
 
 </body>
 </html>
