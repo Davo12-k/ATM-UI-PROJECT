@@ -1,95 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction History - D&Q BANK</title>
 </head>
 
-<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f1f5f9; color: #0f172a;">
+<body style="margin:0; padding:20px; font-family:Arial,sans-serif; background-color:#f1f5f9; color:#0f172a;">
 
-    <div style="max-width: 650px; margin: 20px auto;">
+    <div style="max-width:650px; margin:20px auto;">
 
-        
-        <div style=" background-color: rgb(13, 59, 13); color: white; text-align: center; padding: 25px; border-radius: 12px;">
-            <h1 style="margin: 0 0 10px;">D&Q BANK</h1>
-            <p style="margin: 0; color: white;">TRANSACTION HISTORY</p>
+        <!-- BANK HEADER -->
+        <div style="background-color:rgb(13,59,13); color:white; text-align:center; padding:25px; border-radius:12px;">
+
+            <h1 style="margin:0 0 10px;">D&Q BANK</h1>
+
+            <p style="margin:0;">TRANSACTION HISTORY</p>
+
         </div>
 
-        
-        <div style="background-color: white; margin-top: 20px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-            <p style="margin: 0 0 10px; color: #64748b; font-size: 14px;">
+
+        <!-- ACCOUNT BALANCE -->
+        <div style="background-color:white; margin-top:20px; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+
+            <p id="accountName" style="margin:0 0 15px; font-weight:bold;"></p>
+
+            <p style="margin:0 0 10px; color:#64748b; font-size:14px;">
                 CURRENT ACCOUNT BALANCE
             </p>
 
-            <h2 id="balanceDisplay" style="margin: 0; font-size: 30px; color: #0f2747;">
-                ₦0.00
+            <h2 id="balanceDisplay" style="margin:0; font-size:30px; color:#0f2747;">
+                ₦0
             </h2>
+
         </div>
 
-        
-        <div style="background-color: white; margin-top: 20px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
 
-            <h2 style="margin-top: 0; font-size: 21px;">
+        <!-- TRANSACTION LIST -->
+        <div style="background-color:white; margin-top:20px; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+
+            <h2 style="margin-top:0; font-size:21px;">
                 Recent Transactions
             </h2>
 
             <div id="transactionList">
-                <p style="text-align: center; color: #64748b;">
+                <p style="text-align:center; color:#64748b;">
                     Loading transactions...
                 </p>
             </div>
 
         </div>
 
-        
-        <button onclick="window.location.href='menu.html'"
-            style="width: 100%; margin-top: 25px; padding: 15px; background-color: rgb(8, 45, 8); color: white; font-size: 17px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer;">
-            <<< Back to Menu
+
+        <!-- BACK BUTTON -->
+        <button
+            type="button"
+            onclick="window.location.href='menu.html'"
+            style="width:100%; margin-top:25px; padding:15px; background-color:rgb(8,45,8); color:white; font-size:17px; font-weight:bold; border:none; border-radius:8px; cursor:pointer;"
+        >
+            &lt;&lt;&lt; Back to Menu
         </button>
 
     </div>
 
+
     <script>
-        const balanceDisplay = document.getElementById('balanceDisplay');
-        const transactionList = document.getElementById('transactionList');
 
-        // Fetch the balance and transactions from localStorage
-        const balance = localStorage.getItem('accountBalance') || 0;
-        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        // =================================
+        // 1. GET SAVED USERS
+        // =================================
 
-        // Update the balance display
-        balanceDisplay.textContent = `₦${parseFloat(balance).toFixed(2)}`;
+        function getUsers() {
+            return JSON.parse(localStorage.getItem("atmUsers")) || [];
+        }
 
-        // Display the transactions
-        if (transactions.length === 0) {
-            transactionList.innerHTML = '<p style="text-align: center; color: #64748b;">No transactions found.</p>';
-        } else {
-            transactionList.innerHTML = '';
-            transactions.forEach((transaction, index) => {
-                const transactionDiv = document.createElement('div');
-                transactionDiv.style.padding = '10px';
-                transactionDiv.style.borderBottom = '1px solid #e5e7eb';
-                transactionDiv.style.display = 'flex';
-                transactionDiv.style.justifyContent = 'space-between';
-                transactionDiv.style.alignItems = 'center';
 
-                const detailsDiv = document.createElement('div');
-                detailsDiv.innerHTML = `<strong>${transaction.type}</strong><br><span style="font-size: 12px; color: #64748b;">${transaction.date}</span>`;
+        // =================================
+        // 2. FIND CURRENT USER
+        // =================================
 
-                const amountDiv = document.createElement('div');
-                amountDiv.textContent = `₦${parseFloat(transaction.amount).toFixed(2)}`;
-                amountDiv.style.color = transaction.type === 'Deposit' ? 'green' : 'red';
+        function getCurrentUser() {
+            const users = getUsers();
 
-                transactionDiv.appendChild(detailsDiv);
-                transactionDiv.appendChild(amountDiv);
-                transactionList.appendChild(transactionDiv);
+            const accountNumber = localStorage.getItem("currentAccount");
+
+            return users.find(function(user) {
+                return user.accountNumber === accountNumber;
             });
         }
+
+
+        // =================================
+        // 3. DISPLAY BALANCE AND HISTORY
+        // =================================
+
+        function displayTransactionHistory() {
+
+            const user = getCurrentUser();
+
+            const balanceDisplay = document.getElementById("balanceDisplay");
+
+            const accountName = document.getElementById("accountName");
+
+            const transactionList = document.getElementById("transactionList");
+
+
+            // Check whether an account is selected
+            if (!user) {
+
+                accountName.textContent = "Account not found.";
+
+                balanceDisplay.textContent = "Unavailable";
+
+                transactionList.textContent =
+                    "Please select your card and try again.";
+
+                return;
+            }
+
+
+            // Display the user's name
+            accountName.textContent = "Account Holder: " + user.name;
+
+
+            // Display the latest balance
+            balanceDisplay.textContent =
+                "₦" + Number(user.balance).toLocaleString("en-NG");
+
+
+            // Get this user's transactions
+            const transactions = Array.isArray(user.transactions)
+                ? user.transactions
+                : [];
+
+
+            // Display a message if there are no transactions
+            if (transactions.length === 0) {
+
+                transactionList.innerHTML = "";
+
+                const message = document.createElement("p");
+
+                message.textContent = "No transactions found.";
+
+                message.style.textAlign = "center";
+                message.style.color = "#64748b";
+
+                transactionList.appendChild(message);
+
+                return;
+            }
+
+
+            // Clear the previous transaction list
+            transactionList.innerHTML = "";
+
+
+            // Show newest transactions first
+            transactions.slice().reverse().forEach(function(transaction) {
+
+                const transactionDiv = document.createElement("div");
+
+                transactionDiv.style.padding = "15px 5px";
+                transactionDiv.style.borderBottom = "1px solid #e5e7eb";
+                transactionDiv.style.display = "flex";
+                transactionDiv.style.justifyContent = "space-between";
+                transactionDiv.style.alignItems = "center";
+                transactionDiv.style.gap = "15px";
+
+
+                // Transaction details
+                const detailsDiv = document.createElement("div");
+
+                const typeText = document.createElement("strong");
+
+                typeText.textContent = transaction.type;
+
+                const dateText = document.createElement("p");
+
+                dateText.textContent = transaction.date || "";
+
+                dateText.style.fontSize = "12px";
+                dateText.style.color = "#64748b";
+                dateText.style.margin = "5px 0 0";
+
+
+                const descriptionText = document.createElement("p");
+
+                descriptionText.textContent = transaction.description || "";
+
+                descriptionText.style.fontSize = "12px";
+                descriptionText.style.color = "#64748b";
+                descriptionText.style.margin = "5px 0 0";
+
+
+                detailsDiv.appendChild(typeText);
+                detailsDiv.appendChild(dateText);
+                detailsDiv.appendChild(descriptionText);
+
+
+                // Transaction amount
+                const amountDiv = document.createElement("div");
+
+                amountDiv.textContent =
+                    "₦" + Number(transaction.amount).toLocaleString("en-NG");
+
+                amountDiv.style.fontWeight = "bold";
+                amountDiv.style.whiteSpace = "nowrap";
+
+
+                // Set amount colour
+                if (transaction.type === "Deposit" ||
+                    transaction.type === "Transfer Received") {
+
+                    amountDiv.style.color = "green";
+
+                } else {
+
+                    amountDiv.style.color = "red";
+
+                }
+
+
+                transactionDiv.appendChild(detailsDiv);
+
+                transactionDiv.appendChild(amountDiv);
+
+                transactionList.appendChild(transactionDiv);
+
+            });
+
+        }
+
+
+        // =================================
+        // 4. RUN WHEN PAGE OPENS
+        // =================================
+
+        displayTransactionHistory();
+
     </script>
 
-    
-
-    
 </body>
 </html>

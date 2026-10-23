@@ -14,7 +14,7 @@
             ACCOUNT SERVICES
         </p>
 
-        <h1 style="margin:0; font-size:28px; font-weight:700; color:black">
+        <h1 style="margin:0; font-size:28px; font-weight:700; color:black;">
             Deposit Money
         </h1>
 
@@ -24,123 +24,200 @@
 
     </header>
 
-    <div class="pin-container" style="display:flex; flex-direction:column; align-items:center; gap:18px; padding:25px; width:270px; max-width:calc(100% - 80px); background:#ffffff; border:1px solid #e1e6ee; border-radius:10px; box-shadow:0 6px 20px rgba(11,42,74,0.08);">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:18px; padding:25px; width:270px; max-width:calc(100% - 80px); background:#ffffff; border:1px solid #e1e6ee; border-radius:10px; box-shadow:0 6px 20px rgba(11,42,74,0.08);">
 
-        <input id="amount" type="text" placeholder="Enter Amount (₦)" style="box-sizing:border-box; padding:13px 10px; font-size:17px; width:100%; text-align:center; border:1px solid #cbd5e1; border-radius:6px; outline:none;">
+        <p id="accountName" style="margin:0; font-weight:600;"></p>
+
+        <p style="margin:0; font-size:13px; color:#64748b;">
+            Current Balance
+        </p>
+
+        <h2 id="balance" style="margin:0; color:forestgreen;">
+            ₦0
+        </h2>
+
+        <input
+            id="amount"
+            type="text"
+            inputmode="numeric"
+            placeholder="Enter Amount (₦)"
+            readonly
+            style="box-sizing:border-box; padding:13px 10px; font-size:17px; width:100%; text-align:center; border:1px solid #cbd5e1; border-radius:6px; outline:none;"
+        >
 
         <div class="keypad" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; width:100%;">
 
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">1</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">2</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">3</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">1</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">2</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">3</button>
 
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">4</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">5</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">6</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">4</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">5</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">6</button>
 
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">7</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">8</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">9</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">7</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">8</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">9</button>
 
-            <button style="padding:13px 5px; font-size:15px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">00</button>
-            <button style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">0</button>
-            <button style="padding:13px 5px; font-size:13px; font-weight:600; border:1px solid #f1c5c5; border-radius:6px; background:#fff1f1; color:#b3261e; cursor:pointer;">Delete</button>
+            <button type="button" style="padding:13px 5px; font-size:15px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">00</button>
+            <button type="button" style="padding:13px; font-size:18px; font-weight:600; color:black; border:1px solid #dbe2ea; border-radius:6px; background:#f8fafc; cursor:pointer;">0</button>
+            <button type="button" style="padding:13px 5px; font-size:13px; font-weight:600; border:1px solid #f1c5c5; border-radius:6px; background:#fff1f1; color:#b3261e; cursor:pointer;">Delete</button>
 
         </div>
 
-        <button id="submitDeposit" style="width:100%; padding:14px; font-size:16px; font-weight:600; color:#ffffff; background:forestgreen; border:none; border-radius:7px; cursor:pointer; margin-top:3px;">
-            Submit
+        <button id="submitDeposit" type="button" style="width:100%; padding:14px; font-size:16px; font-weight:600; color:#ffffff; background:forestgreen; border:none; border-radius:7px; cursor:pointer; margin-top:3px;">
+            Submit Deposit
         </button>
 
         <p style="margin:0; text-align:center; font-size:12px; line-height:1.5; color:#7b8798;">
             Please confirm the amount before submitting.
         </p>
 
+        <a href="menu.html" style="text-decoration:none; color:#2563eb;">
+            Back to Menu
+        </a>
+
     </div>
 
-    
-        
 <script>
+    // Get the input, buttons and display elements
     const amountInput = document.getElementById("amount");
-const keypadButtons = document.querySelectorAll(".keypad button");
-const submitButton = document.getElementById("submitDeposit");
+    const keypadButtons = document.querySelectorAll(".keypad button");
+    const submitButton = document.getElementById("submitDeposit");
+    const balanceDisplay = document.getElementById("balance");
+    const accountNameDisplay = document.getElementById("accountName");
 
 
-keypadButtons.forEach(button => {
-button.addEventListener("click", () => {
-const digit = button.innerText;
-
-    if (digit === "Delete") {
-        amountInput.value = amountInput.value.slice(0, -1);
-    } else if (amountInput.value.length < 12) {
-        amountInput.value += digit;
+    // Load all saved accounts
+    function getUsers() {
+        return JSON.parse(localStorage.getItem("atmUsers")) || [];
     }
-});
 
 
-});
+    // Save all accounts
+    function saveUsers(users) {
+        localStorage.setItem("atmUsers", JSON.stringify(users));
+    }
 
 
-submitButton.addEventListener("click", () => {
-const depositAmount = Number(amountInput.value);
+    // Find the currently selected account
+    function getCurrentUser(users) {
+        const accountNumber = localStorage.getItem("currentAccount");
+
+        return users.find(function(user) {
+            return user.accountNumber === accountNumber;
+        });
+    }
 
 
-if (
-    amountInput.value.trim() === "" ||
-    !Number.isSafeInteger(depositAmount) ||
-    depositAmount <= 0
-) {
-    alert("Please enter a valid deposit amount.");
-    return;
-}
+    // Display the latest balance
+    function updateBalance() {
+        const users = getUsers();
+        const user = getCurrentUser(users);
 
-let balance = Number(localStorage.getItem("balance") ?? 50000);
+        if (!user) {
+            alert("Account not found. Please select your card again.");
+            window.location.href = "atm_ui.html";
+            return;
+        }
 
-if (
-    !Number.isSafeInteger(balance) ||
-    balance < 0 ||
-    balance + depositAmount > Number.MAX_SAFE_INTEGER
-) {
-    alert("Unable to process deposit.");
-    return;
-}
+        balanceDisplay.innerText =
+            "₦" + Number(user.balance).toLocaleString("en-NG");
+
+        accountNameDisplay.innerText = "Welcome, " + user.name;
+    }
 
 
-balance += depositAmount;
+    // Make the keypad work
+    keypadButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            const digit = button.innerText;
 
-localStorage.setItem("balance", balance);
+            if (digit === "Delete") {
+                amountInput.value = amountInput.value.slice(0, -1);
+                return;
+            }
 
-
-let transactions = JSON.parse(
-    localStorage.getItem("transactions") || "[]"
-);
-
-
-transactions.push({
-    type: "Deposit",
-    amount: depositAmount,
-    date: new Date().toLocaleString()
-});
-
-
-localStorage.setItem(
-    "transactions",
-    JSON.stringify(transactions)
-);
+            if (amountInput.value.length + digit.length <= 12) {
+                amountInput.value += digit;
+            }
+        });
+    });
 
 
-alert(
-    "Deposit successful!\n" +
-    "Amount: ₦" + depositAmount.toLocaleString() + "\n" +
-    "New Balance: ₦" + balance.toLocaleString()
-);
+    // Process the deposit
+    submitButton.addEventListener("click", function() {
+        const amountText = amountInput.value.trim();
+
+        if (amountText === "" || !/^\d+$/.test(amountText)) {
+            alert("Please enter a valid deposit amount.");
+            return;
+        }
+
+        const depositAmount = Number(amountText);
+
+        if (!Number.isSafeInteger(depositAmount) || depositAmount <= 0) {
+            alert("Please enter a valid positive whole-number amount.");
+            return;
+        }
+
+        const users = getUsers();
+        const user = getCurrentUser(users);
+
+        if (!user) {
+            alert("Account not found. Please select your card again.");
+            window.location.href = "atm_ui.html";
+            return;
+        }
+
+        if (!Number.isSafeInteger(user.balance) || user.balance < 0) {
+            alert("The saved account balance is invalid.");
+            return;
+        }
+
+        if (!Number.isSafeInteger(user.balance + depositAmount)) {
+            alert("This deposit amount is too large.");
+            return;
+        }
+
+        // Add money to the selected user's balance
+        user.balance += depositAmount;
+
+        // Create the transactions array if one doesn't exist
+        if (!Array.isArray(user.transactions)) {
+            user.transactions = [];
+        }
+
+        // Save the deposit in this user's history
+        user.transactions.push({
+            type: "Deposit",
+            amount: depositAmount,
+            date: new Date().toLocaleString(),
+            balanceAfter: user.balance,
+            description: "Cash deposited"
+        });
+
+        // Save the updated accounts and transactions
+        saveUsers(users);
+
+        // Update the displayed balance
+        updateBalance();
+
+        alert(
+            "Deposit successful!\n\n" +
+            "Amount: ₦" + depositAmount.toLocaleString("en-NG") +
+            "\nNew Balance: ₦" + user.balance.toLocaleString("en-NG")
+        );
+
+        // Clear the amount field
+        amountInput.value = "";
+    });
 
 
-amountInput.value = "";
-
-});
-
+    // Display the account balance when the page opens
+    updateBalance();
 </script>
 
 </body>
 </html>
+

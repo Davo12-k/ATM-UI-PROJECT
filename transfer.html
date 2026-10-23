@@ -18,9 +18,17 @@
             Funds Transfer
         </h2>
 
-        <p style="margin:0 0 25px; font-size:14px; color:#68768a;">
+        <p style="margin:0 0 20px; font-size:14px; color:#68768a;">
             Enter the recipient's account number and transfer amount.
         </p>
+
+        <p style="margin:0 0 6px; font-size:13px; color:#64748b;">
+            Your Current Balance
+        </p>
+
+        <h3 id="balance" style="margin:0 0 20px; color:forestgreen;">
+            ₦0
+        </h3>
 
         <label for="accountNumber" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600;">
             Recipient Account Number
@@ -58,7 +66,7 @@
             style="display:block; box-sizing:border-box; margin-bottom:22px; padding:13px; font-size:15px; width:100%; border:1px solid #ccd4df; border-radius:6px;"
         >
 
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+        <div class="keypad" style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
 
             <button type="button" class="key" data-number="1">1</button>
             <button type="button" class="key" data-number="2">2</button>
@@ -69,29 +77,37 @@
             <button type="button" class="key" data-number="7">7</button>
             <button type="button" class="key" data-number="8">8</button>
             <button type="button" class="key" data-number="9">9</button>
+            <button type="button" class="key" data-number="00">00</button>
             <button type="button" class="key" data-number="0">0</button>
 
-            <button id="deleteBtn" type="button" style="height:52px; font-size:13px; font-weight:600; background:#fff0ef; color:#b3261e; border:1px solid #e5b7b4; border-radius:6px; cursor:pointer;">
+            <button
+                id="deleteBtn"
+                type="button"
+                style="height:52px; font-size:13px; font-weight:600; background:#fff0ef; color:#b3261e; border:1px solid #e5b7b4; border-radius:6px; cursor:pointer;"
+            >
                 Delete
-            </button>
-
-            <button id="enterBtn" type="button" style="height:52px; font-size:13px; font-weight:600; background:#14532d; color:white; border:none; border-radius:6px; cursor:pointer;">
-                Enter
             </button>
 
         </div>
 
+        <button
+            id="enterBtn"
+            type="button"
+            style="width:100%; height:48px; margin-top:12px; font-size:15px; font-weight:600; background:#14532d; color:white; border:none; border-radius:6px; cursor:pointer;"
+        >
+            Transfer Money
+        </button>
+
         <p id="message" aria-live="polite" style="margin:15px 0; text-align:center; font-size:14px;"></p>
 
-       <a href="menu.html">
-          <button
-            id="backBtn"
-            type="button"
-            style="width:100%; padding:12px; background:#e8edf3; color:#14233a; border:none; border-radius:6px; cursor:pointer;"
-        >
-            Back to Menu
-        </button>
-       </a> 
+        <a href="menu.html" style="display:block; text-decoration:none;">
+            <button
+                type="button"
+                style="width:100%; padding:12px; background:#e8edf3; color:#14233a; border:none; border-radius:6px; cursor:pointer;"
+            >
+                Back to Menu
+            </button>
+        </a>
 
         <p style="margin:20px 0 0; text-align:center; font-size:12px; color:#7b8798;">
             Please verify the recipient's details before transferring.
@@ -116,9 +132,305 @@
         }
     </style>
 
-    
+    <script>
+        // =================================
+        // 1. GET AND SAVE USERS
+        // =================================
 
-    
+        function getUsers() {
+            return JSON.parse(localStorage.getItem("atmUsers")) || [];
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem("atmUsers", JSON.stringify(users));
+        }
+
+
+        // =================================
+        // 2. GET CURRENT USER
+        // =================================
+
+        function getCurrentUser(users) {
+            const accountNumber = localStorage.getItem("currentAccount");
+
+            return users.find(function(user) {
+                return user.accountNumber === accountNumber;
+            });
+        }
+
+
+        // =================================
+        // 3. GET PAGE ELEMENTS
+        // =================================
+
+        const accountInput = document.getElementById("accountNumber");
+        const amountInput = document.getElementById("amount");
+        const accountNameDisplay = document.getElementById("accountName");
+        const balanceDisplay = document.getElementById("balance");
+        const messageDisplay = document.getElementById("message");
+
+        let verifiedRecipient = null;
+
+
+        // =================================
+        // 4. DISPLAY SENDER'S BALANCE
+        // =================================
+
+        function updateBalance() {
+            const users = getUsers();
+            const sender = getCurrentUser(users);
+
+            if (!sender) {
+                alert("Please select your card first.");
+                window.location.href = "atm_ui.html";
+                return;
+            }
+
+            balanceDisplay.innerText =
+                "₦" + Number(sender.balance).toLocaleString("en-NG");
+        }
+
+
+        // =================================
+        // 5. VERIFY RECIPIENT
+        // =================================
+
+        document.getElementById("checkAccount").addEventListener("click", function() {
+            const accountNumber = accountInput.value.trim();
+
+            verifiedRecipient = null;
+            accountNameDisplay.innerText = "";
+            messageDisplay.innerText = "";
+
+            if (!/^\d{10}$/.test(accountNumber)) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Enter a valid 10-digit account number.";
+                return;
+            }
+
+            const users = getUsers();
+            const sender = getCurrentUser(users);
+
+            if (!sender) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Your account was not found. Please select your card again.";
+                return;
+            }
+
+            if (accountNumber === sender.accountNumber) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "You cannot transfer money to yourself.";
+                return;
+            }
+
+            const recipient = users.find(function(user) {
+                return user.accountNumber === accountNumber;
+            });
+
+            if (!recipient) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Recipient account not found.";
+                return;
+            }
+
+            verifiedRecipient = {
+                accountNumber: recipient.accountNumber,
+                name: recipient.name
+            };
+
+            accountNameDisplay.innerText =
+                "Account Name: " + recipient.name;
+
+            accountNameDisplay.style.color = "green";
+
+            messageDisplay.style.color = "green";
+            messageDisplay.innerText = "Account verified successfully.";
+        });
+
+
+        // =================================
+        // 6. NUMERIC KEYPAD
+        // =================================
+
+        document.querySelectorAll(".key[data-number]").forEach(function(button) {
+            button.addEventListener("click", function() {
+                const digit = button.dataset.number;
+
+                if (amountInput.value.length + digit.length > 12) {
+                    return;
+                }
+
+                amountInput.value += digit;
+            });
+        });
+
+
+        // =================================
+        // 7. DELETE LAST DIGIT
+        // =================================
+
+        document.getElementById("deleteBtn").addEventListener("click", function() {
+            amountInput.value = amountInput.value.slice(0, -1);
+        });
+
+
+        // =================================
+        // 8. RECORD TRANSACTION
+        // =================================
+
+        function recordTransaction(user, type, amount, description) {
+            if (!Array.isArray(user.transactions)) {
+                user.transactions = [];
+            }
+
+            user.transactions.push({
+                type: type,
+                amount: amount,
+                description: description,
+                date: new Date().toLocaleString(),
+                balanceAfter: user.balance
+            });
+        }
+
+
+        // =================================
+        // 9. TRANSFER MONEY
+        // =================================
+
+        document.getElementById("enterBtn").addEventListener("click", function() {
+            messageDisplay.innerText = "";
+
+            if (!verifiedRecipient) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Please verify the recipient's account first.";
+                return;
+            }
+
+            const amountText = amountInput.value.trim();
+
+            if (!/^\d+$/.test(amountText)) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Please enter a valid transfer amount.";
+                return;
+            }
+
+            const amount = Number(amountText);
+
+            if (!Number.isSafeInteger(amount) || amount <= 0) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Enter a valid positive whole-number amount.";
+                return;
+            }
+
+            // Reload the latest saved accounts
+            const users = getUsers();
+
+            const sender = getCurrentUser(users);
+
+            const recipient = users.find(function(user) {
+                return user.accountNumber ===
+                    verifiedRecipient.accountNumber;
+            });
+
+            if (!sender || !recipient) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Could not find the sender or recipient account.";
+                return;
+            }
+
+            if (sender.accountNumber === recipient.accountNumber) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "You cannot transfer money to yourself.";
+                return;
+            }
+
+            if (!Number.isSafeInteger(sender.balance) ||
+                !Number.isSafeInteger(recipient.balance) ||
+                sender.balance < 0 ||
+                recipient.balance < 0) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "An account has an invalid balance.";
+                return;
+            }
+
+            if (amount > sender.balance) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "Insufficient funds.";
+                return;
+            }
+
+            if (!Number.isSafeInteger(recipient.balance + amount)) {
+                messageDisplay.style.color = "red";
+                messageDisplay.innerText =
+                    "The recipient's balance would exceed the supported limit.";
+                return;
+            }
+
+            // Update both accounts
+            sender.balance -= amount;
+            recipient.balance += amount;
+
+            // Record the sender's transaction
+            recordTransaction(
+                sender,
+                "Transfer Sent",
+                amount,
+                "Money sent to " + recipient.name
+            );
+
+            // Record the recipient's transaction
+            recordTransaction(
+                recipient,
+                "Transfer Received",
+                amount,
+                "Money received from " + sender.name
+            );
+
+            // Save both accounts
+            saveUsers(users);
+
+            // Update the displayed sender balance
+            updateBalance();
+
+            messageDisplay.style.color = "green";
+            messageDisplay.innerText =
+                "Transfer successful! ₦" +
+                amount.toLocaleString("en-NG") +
+                " sent to " + recipient.name + ".";
+
+            alert(
+                "Transfer successful!\n\n" +
+                "Recipient: " + recipient.name + "\n" +
+                "Amount: ₦" + amount.toLocaleString("en-NG") + "\n" +
+                "Your new balance: ₦" +
+                sender.balance.toLocaleString("en-NG")
+            );
+
+            // Clear the transfer form
+            amountInput.value = "";
+            accountInput.value = "";
+            accountNameDisplay.innerText = "";
+            verifiedRecipient = null;
+        });
+
+
+        // =================================
+        // 10. LOAD BALANCE ON PAGE OPEN
+        // =================================
+
+        updateBalance();
+    </script>
 
 </body>
 </html>
