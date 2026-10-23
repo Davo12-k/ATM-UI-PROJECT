@@ -1,66 +1,211 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balance Page</title>
 </head>
 
-<body style="margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f1f4f8; font-family:'Segoe UI', Tahoma, Verdana, sans-serif; color:#14233a;">
+<body style="
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f4f8;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #14233a;
+">
 
-    <div style="width:100%; padding:28px; max-width:440px; margin:24px; background:white; border-radius:14px; box-shadow:0 8px 25px rgba(24, 150, 133, 0.12); box-sizing:border-box;">
+    <div style="
+        width: 100%;
+        padding: 28px;
+        max-width: 440px;
+        margin: 24px;
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(24, 150, 133, 0.12);
+        box-sizing: border-box;
+    ">
 
-        <p style="margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:2px; color:#7b8798;">
+        <p id="accountName"></p>
+
+        <p style="
+            margin: 0 0 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7b8798;
+        ">
             ACCOUNT ENQUIRY
         </p>
 
-        <h2 style="margin:0 0 25px; font-size:28px; font-weight:700; color:forestgreen;">
+        <h2 style="
+            margin: 0 0 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: forestgreen;
+        ">
             Check Balance
         </h2>
 
-        <div style="padding:24px 20px; background:#f6f8fb; border:1px solid #dce3ec; border-left:5px solid greenyellow; border-radius:8px; margin-bottom:28px;">
+        <div style="
+            padding: 24px 20px;
+            background: #f6f8fb;
+            border: 1px solid #dce3ec;
+            border-left: 5px solid greenyellow;
+            border-radius: 8px;
+            margin-bottom: 28px;
+        ">
 
-            <p style="margin:0 0 12px; font-size:14px; color:#65748b;">
+            <p style="margin: 0 0 12px; font-size: 14px; color: #65748b;">
                 Available Balance
             </p>
 
-            <h1 id="balance" style="margin:0; font-size:32px; font-weight:700; color:green;">
-                ₦25,000.00
+            <h1 id="balance" style="
+                margin: 0;
+                font-size: 32px;
+                font-weight: 700;
+                color: green;
+            ">
+                ₦0
             </h1>
 
-            <p style="margin:12px 0 0; font-size:12px; color:#7b8798;">
+            <p style="margin: 12px 0 0; font-size: 12px; color: #7b8798;">
                 Your current account balance
             </p>
 
         </div>
 
-        <button onclick="window.print()" style="display:block; box-sizing:border-box; height:52px; margin-bottom:12px; width:100%; font-size:16px; font-weight:600; color:white; background:#14532D; border:none; border-radius:7px; cursor:pointer;">
+        <button
+            onclick="window.print()"
+            style="
+                display: block;
+                box-sizing: border-box;
+                height: 52px;
+                margin-bottom: 12px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 600;
+                color: white;
+                background: #14532d;
+                border: none;
+                border-radius: 7px;
+                cursor: pointer;
+            "
+        >
             Print Receipt
         </button>
 
-        <a href="menu.html" style="display:block; text-decoration:none; margin-bottom:12px;">
-            <button style="display:block; box-sizing:border-box; height:52px; width:100%; font-size:16px; font-weight:600; color:forestgreen; background:white; border:1px solid forestgreen; border-radius:7px; cursor:pointer;">
+        <a href="menu.html" style="display: block; text-decoration: none; margin-bottom: 12px;">
+            <button style="
+                display: block;
+                box-sizing: border-box;
+                height: 52px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 600;
+                color: forestgreen;
+                background: white;
+                border: 1px solid forestgreen;
+                border-radius: 7px;
+                cursor: pointer;
+            ">
                 Back to Menu
             </button>
         </a>
 
-        <a href="atm_ui.html" style="display:block; text-decoration:none;">
-            <button style="display:block; box-sizing:border-box; height:52px; width:100%; font-size:16px; font-weight:600; color:#b3261e; background:white; border:1px solid #b3261e; border-radius:7px; cursor:pointer;">
+        <a href="atm_ui.html" onclick="localStorage.removeItem('currentAccount')" style="display: block; text-decoration: none;">
+            <button style="
+                display: block;
+                box-sizing: border-box;
+                height: 52px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 600;
+                color: #b3261e;
+                background: white;
+                border: 1px solid #b3261e;
+                border-radius: 7px;
+                cursor: pointer;
+            ">
                 Exit
             </button>
         </a>
 
     </div>
 
-    <script>
-        
-        
-     
+    <script></script>
+
+        // // ========================================
+        // // 1. GET THE USERS FROM LOCAL STORAGE
+        // // ========================================
+
+        // const users = JSON.parse(localStorage.getItem("atmUsers")) || [];
 
 
+        // // ========================================
+        // // 2. GET THE CURRENT USER
+        // // ========================================
+
+        // function getCurrentUser() {
+
+        //     const accountNumber = localStorage.getItem("currentAccount");
+
+        //     return users.find(function(user) {
+        //         return user.accountNumber === accountNumber;
+        //     });
+
+        // }
+
+
+        // // ========================================
+        // // 3. DISPLAY ACCOUNT BALANCE
+        // // ========================================
+
+        // function updateBalance() {
+
+        //     const user = getCurrentUser();
+
+        //     if (!user) {
+        //         alert("Please select your card first.");
+        //         window.location.href = "atm_ui.html";
+        //         return;
+        //     }
+
+        //     const balanceDisplay = document.getElementById("balance");
+
+        //     const accountNameDisplay = document.getElementById("accountName");
+
+
+        //     // DISPLAY THE BALANCE
+
+        //     if (balanceDisplay) {
+        //         balanceDisplay.innerText =
+        //             "₦" + Number(user.balance).toLocaleString("en-NG");
+        //     }
+
+
+        //     // DISPLAY THE USER'S NAME
+
+        //     if (accountNameDisplay) {
+        //         accountNameDisplay.innerText = user.name;
+        //     }
+
+        // }
+
+
+        // // ========================================
+        // // 4. RUN THE FUNCTION
+        // // ========================================
+
+        // updateBalance();
+
     
-    
-    </script>
 
 </body>
 </html>
+
+
