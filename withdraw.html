@@ -1,228 +1,426 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Withdrawal Page</title>
-</head>
+  </head>
 
-<body style="margin: 0; font-family: Arial, sans-serif; background-color: #F8FAF8; color: #1F2937;">
-
-    <h1 style="text-align: center; margin-top: 35px; color: #14532D; font-size: 30px;">
-        Cash Withdrawal
+  <body
+    style="
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8faf8;
+      color: #1f2937;
+    "
+  >
+    <h1
+      style="
+        text-align: center;
+        margin-top: 35px;
+        color: #14532d;
+        font-size: 30px;
+      "
+    >
+      Cash Withdrawal
     </h1>
 
-    <p style="text-align: center; margin-top: 20px; color: #6B7280; font-size: 16px;">
-        Enter the amount you want to withdraw
+    <p
+      style="
+        text-align: center;
+        margin-top: 20px;
+        color: #6b7280;
+        font-size: 16px;
+      "
+    >
+      Enter the amount you want to withdraw
     </p>
 
-    <p id="balanceDisplay" style="text-align: center; font-weight: bold; color: #14532D;">
-        Loading balance...
+    <p
+      id="balanceDisplay"
+      style="text-align: center; font-weight: bold; color: #14532d"
+    >
+      Loading balance...
     </p>
 
     <input
-        id="withdraw-amount"
-        type="text"
-        inputmode="numeric"
-        placeholder="Enter Amount"
-        readonly
-        style="display: block; margin: 25px auto; padding: 14px; font-size: 18px; width: 250px; box-sizing: border-box; text-align: center; border: 2px solid #D1D5DB; border-radius: 8px; background-color: white; outline-color: #14532D;"
+      id="withdraw-amount"
+      type="text"
+      inputmode="numeric"
+      placeholder="Enter Amount"
+      readonly
+      style="
+        display: block;
+        margin: 25px auto;
+        padding: 14px;
+        font-size: 18px;
+        width: 250px;
+        box-sizing: border-box;
+        text-align: center;
+        border: 2px solid #d1d5db;
+        border-radius: 8px;
+        background-color: white;
+        outline-color: #14532d;
+      "
+    />
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        width: 270px;
+        margin: 30px auto;
+      "
     >
+      <button
+        class="key"
+        data-value="1"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        1
+      </button>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 270px; margin: 30px auto;">
+      <button
+        class="key"
+        data-value="2"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        2
+      </button>
 
-        <button class="key" data-value="1" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">1</button>
+      <button
+        class="key"
+        data-value="3"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        3
+      </button>
 
-        <button class="key" data-value="2" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">2</button>
+      <button
+        class="key"
+        data-value="4"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        4
+      </button>
 
-        <button class="key" data-value="3" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">3</button>
+      <button
+        class="key"
+        data-value="5"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        5
+      </button>
 
-        <button class="key" data-value="4" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">4</button>
+      <button
+        class="key"
+        data-value="6"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        6
+      </button>
 
-        <button class="key" data-value="5" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">5</button>
+      <button
+        class="key"
+        data-value="7"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        7
+      </button>
 
-        <button class="key" data-value="6" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">6</button>
+      <button
+        class="key"
+        data-value="8"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        8
+      </button>
 
-        <button class="key" data-value="7" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">7</button>
+      <button
+        class="key"
+        data-value="9"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        9
+      </button>
 
-        <button class="key" data-value="8" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">8</button>
+      <button
+        class="key"
+        data-value="0"
+        style="
+          padding: 14px;
+          font-size: 18px;
+          font-weight: 600;
+          border: 1px solid #d1d5db;
+          border-radius: 8px;
+          background: white;
+          cursor: pointer;
+        "
+      >
+        0
+      </button>
 
-        <button class="key" data-value="9" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">9</button>
+      <button
+        id="enterBtn"
+        style="
+          padding: 14px 5px;
+          font-size: 15px;
+          font-weight: 600;
+          border: none;
+          border-radius: 8px;
+          background: #14532d;
+          color: white;
+          cursor: pointer;
+        "
+      >
+        Enter
+      </button>
 
-        <button class="key" data-value="0" style="padding: 14px; font-size: 18px; font-weight: 600; border: 1px solid #D1D5DB; border-radius: 8px; background: white; cursor: pointer;">0</button>
-
-        <button id="enterBtn" style="padding: 14px 5px; font-size: 15px; font-weight: 600; border: none; border-radius: 8px; background: #14532D; color: white; cursor: pointer;">Enter</button>
-
-        <button id="deleteBtn" style="padding: 14px 5px; font-size: 14px; font-weight: 600; border: 1px solid #F1C5C5; border-radius: 8px; background: #FFF1F1; color: #B3261E; cursor: pointer;">Delete</button>
-
+      <button
+        id="deleteBtn"
+        style="
+          padding: 14px 5px;
+          font-size: 14px;
+          font-weight: 600;
+          border: 1px solid #f1c5c5;
+          border-radius: 8px;
+          background: #fff1f1;
+          color: #b3261e;
+          cursor: pointer;
+        "
+      >
+        Delete
+      </button>
     </div>
 
-    <p id="message" style="text-align: center; font-size: 14px; margin: 15px;"></p>
+    <p
+      id="message"
+      style="text-align: center; font-size: 14px; margin: 15px"
+    ></p>
 
-    <div style="text-align: center; margin: 25px;">
-        <a href="menu.html" style="display: inline-block; padding: 12px 20px; background: #6B7280; color: white; text-decoration: none; border-radius: 8px;">
-            Back to Menu
-        </a>
+    <div style="text-align: center; margin: 25px">
+      <a
+        href="menu.html"
+        style="
+          display: inline-block;
+          padding: 12px 20px;
+          background: #6b7280;
+          color: white;
+          text-decoration: none;
+          border-radius: 8px;
+        "
+      >
+        Back to Menu
+      </a>
     </div>
 
     <script>
-        const withdrawAmountInput = document.getElementById("withdraw-amount");
-        const balanceDisplay = document.getElementById("balanceDisplay");
-        const message = document.getElementById("message");
-        const enterBtn = document.getElementById("enterBtn");
-        const deleteBtn = document.getElementById("deleteBtn");
-        const numberButtons = document.querySelectorAll(".key");
+      const withdrawAmountInput = document.getElementById("withdraw-amount");
+      const balanceDisplay = document.getElementById("balanceDisplay");
+      const message = document.getElementById("message");
+      const enterBtn = document.getElementById("enterBtn");
+      const deleteBtn = document.getElementById("deleteBtn");
+      const numberButtons = document.querySelectorAll(".key");
 
-       
-        function getUsers() {
-            return JSON.parse(localStorage.getItem("atmUsers")) || [];
+      function getUsers() {
+        return JSON.parse(localStorage.getItem("atmUsers")) || [];
+      }
+
+      function saveUsers(users) {
+        localStorage.setItem("atmUsers", JSON.stringify(users));
+      }
+
+      function getCurrentUser(users) {
+        const accountNumber = localStorage.getItem("currentAccount");
+
+        return users.find((user) => user.accountNumber === accountNumber);
+      }
+
+      function updateBalance() {
+        const users = getUsers();
+        const user = getCurrentUser(users);
+
+        if (!user) {
+          balanceDisplay.textContent = "Account not found.";
+          enterBtn.disabled = true;
+          message.textContent = "Please select your card again.";
+          return;
         }
 
+        user.balance = Number(user.balance);
 
-        function saveUsers(users) {
-            localStorage.setItem("atmUsers", JSON.stringify(users));
-        }
+        balanceDisplay.textContent =
+          "Available Balance: ₦" + user.balance.toLocaleString("en-NG");
 
+        enterBtn.disabled = false;
+      }
 
-            const accountNumber = localStorage.getItem("currentAccount");
-
-            return users.find(user =>
-                user.accountNumber === accountNumber
-            );
-        }
-
-      
-        function updateBalance() {
-            const users = getUsers();
-            const user = getCurrentUser(users);
-
-            if (!user) {
-                balanceDisplay.textContent = "Account not found.";
-                enterBtn.disabled = true;
-                message.textContent = "Please select your card again.";
-                return;
-            }
-
-            user.balance = Number(user.balance);
-
-            balanceDisplay.textContent =
-                "Available Balance: ₦" +
-                user.balance.toLocaleString("en-NG");
-
-            enterBtn.disabled = false;
-        }
-
-       
-        numberButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                if (withdrawAmountInput.value.length < 12) {
-                    withdrawAmountInput.value += button.dataset.value;
-                    message.textContent = "";
-                }
-            });
-        });
-
-        
-        deleteBtn.addEventListener("click", () => {
-            withdrawAmountInput.value =
-                withdrawAmountInput.value.slice(0, -1);
-
+      numberButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (withdrawAmountInput.value.length < 12) {
+            withdrawAmountInput.value += button.dataset.value;
             message.textContent = "";
+          }
+        });
+      });
+
+      deleteBtn.addEventListener("click", () => {
+        withdrawAmountInput.value = withdrawAmountInput.value.slice(0, -1);
+
+        message.textContent = "";
+      });
+
+      enterBtn.addEventListener("click", handleWithdrawal);
+
+      function handleWithdrawal() {
+        const amountText = withdrawAmountInput.value.trim();
+        const amount = Number(amountText);
+
+        if (amountText === "" || !Number.isSafeInteger(amount) || amount <= 0) {
+          message.textContent = "Please enter a valid whole-number amount.";
+
+          message.style.color = "#B3261E";
+          return;
+        }
+
+        const users = getUsers();
+        const user = getCurrentUser(users);
+
+        if (!user) {
+          message.textContent =
+            "Account not found. Please select your card again.";
+
+          message.style.color = "#B3261E";
+          return;
+        }
+
+        user.balance = Number(user.balance);
+
+        if (!Number.isSafeInteger(user.balance) || user.balance < 0) {
+          message.textContent =
+            "Your account balance is invalid. Please reset your test data.";
+
+          message.style.color = "#B3261E";
+          return;
+        }
+
+        if (amount > user.balance) {
+          message.textContent = "Insufficient funds. Your balance is too low.";
+
+          message.style.color = "#B3261E";
+          return;
+        }
+
+        user.balance -= amount;
+
+        if (!Array.isArray(user.transactions)) {
+          user.transactions = [];
+        }
+
+        user.transactions.push({
+          type: "Withdrawal",
+          amount: amount,
+          description: "Cash withdrawn",
+          date: new Date().toLocaleString(),
+          balanceAfter: user.balance,
         });
 
-       
-        enterBtn.addEventListener("click", handleWithdrawal);
-
-        function handleWithdrawal() {
-            const amountText = withdrawAmountInput.value.trim();
-            const amount = Number(amountText);
-
-            if (
-                amountText === "" ||
-                !Number.isSafeInteger(amount) ||
-                amount <= 0
-            ) {
-                message.textContent =
-                    "Please enter a valid whole-number amount.";
-
-                message.style.color = "#B3261E";
-                return;
-            }
-
-            const users = getUsers();
-            const user = getCurrentUser(users);
-
-            if (!user) {
-                message.textContent =
-                    "Account not found. Please select your card again.";
-
-                message.style.color = "#B3261E";
-                return;
-            }
-
-            user.balance = Number(user.balance);
-
-            if (
-                !Number.isSafeInteger(user.balance) ||
-                user.balance < 0
-            ) {
-                message.textContent =
-                    "Your account balance is invalid. Please reset your test data.";
-
-                message.style.color = "#B3261E";
-                return;
-            }
-
-           
-            if (amount > user.balance) {
-                message.textContent =
-                    "Insufficient funds. Your balance is too low.";
-
-                message.style.color = "#B3261E";
-                return;
-            }
-
-            
-            user.balance -= amount;
-
-            
-            if (!Array.isArray(user.transactions)) {
-                user.transactions = [];
-            }
-
-           
-            user.transactions.push({
-                type: "Withdrawal",
-                amount: amount,
-                description: "Cash withdrawn",
-                date: new Date().toLocaleString(),
-                balanceAfter: user.balance
-            });
-
-           
-            saveUsers(users);
-
-           
-            updateBalance();
-
-            message.textContent =
-                "Withdrawal successful! You withdrew ₦" +
-                amount.toLocaleString("en-NG");
-
-            message.style.color = "#14532D";
-
-            alert(
-                "Withdrawal successful!\n" +
-                "Amount: ₦" + amount.toLocaleString("en-NG") + "\n" +
-                "New Balance: ₦" + user.balance.toLocaleString("en-NG")
-            );
-
-        
-            withdrawAmountInput.value = "";
-        }
+        saveUsers(users);
 
         updateBalance();
-    </script>
 
-</body>
+        message.textContent =
+          "Withdrawal successful! You withdrew ₦" +
+          amount.toLocaleString("en-NG");
+
+        message.style.color = "#14532D";
+
+        alert(
+          "Withdrawal successful!\n" +
+            "Amount: ₦" +
+            amount.toLocaleString("en-NG") +
+            "\n" +
+            "New Balance: ₦" +
+            user.balance.toLocaleString("en-NG"),
+        );
+
+        withdrawAmountInput.value = "";
+      }
+
+      updateBalance();
+    </script>
+  </body>
 </html>
