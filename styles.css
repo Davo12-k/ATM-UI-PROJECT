@@ -97,7 +97,6 @@ img {
         gap: 8px !important;
     }
 
-    /* Make withdrawal-page keypad responsive */
     .key {
         min-width: 0;
         padding: 12px 5px !important;
@@ -113,4 +112,44 @@ img {
     button {
         touch-action: manipulation;
     }
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 15px !important;
+    }
+
+    h1 {
+        font-size: 28px !important;
+    }
+   
+    .menu-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    .menu-container button,
+    .menu-container a {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
 }
