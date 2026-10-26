@@ -1,0 +1,60 @@
+
+@media screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 26px !important;
+    }
+
+    h2 {
+        font-size: 25px !important;
+    }
+
+    input {
+        max-width: 90%;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+    body {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 23px !important;
+        margin-top: 25px !important;
+    }
+
+    h2 {
+        font-size: 22px !important;
+        margin-top: 30px !important;
+    }
+
+    p {
+        font-size: 14px !important;
+    }
+
+    input {
+        max-width: 100%;
+        font-size: 16px !important;
+    }
+
+    button {
+        font-size: 14px !important;
+        padding: 12px !important;
+    }
+
+    form {
+        max-width: 100%;
+        box-sizing: border-box !important;
+    }
+
+}
+
