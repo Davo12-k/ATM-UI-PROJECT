@@ -1,3 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 
 @media screen and (max-width: 768px) {
 
@@ -6,15 +24,21 @@
     }
 
     h2 {
-        font-size: 25px !important;
+        font-size: 24px !important;
     }
 
-    input {
-        max-width: 90%;
-    }
-
-    button {
+    input,
+    select,
+    textarea {
         max-width: 100%;
+    }
+
+    form {
+        width: 90% !important;
+        max-width: 400px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 20px !important;
     }
 
 }
@@ -23,8 +47,7 @@
 @media screen and (max-width: 480px) {
 
     body {
-        padding: 10px;
-        box-sizing: border-box;
+        padding: 10px !important;
     }
 
     h1 {
@@ -34,27 +57,60 @@
 
     h2 {
         font-size: 22px !important;
-        margin-top: 30px !important;
+        margin-top: 25px !important;
     }
 
     p {
         font-size: 14px !important;
+        overflow-wrap: anywhere;
     }
 
-    input {
-        max-width: 100%;
+    input,
+    select,
+    textarea {
+        width: 100% !important;
+        max-width: 100% !important;
         font-size: 16px !important;
     }
 
-    button {
-        font-size: 14px !important;
-        padding: 12px !important;
-    }
-
     form {
-        max-width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 18px !important;
+        margin: 20px auto !important;
         box-sizing: border-box !important;
     }
 
-}
+    button {
+        max-width: 100%;
+        font-size: 14px !important;
+    }
 
+    
+    .keypad,
+    .keypad-grid {
+        width: 100% !important;
+        max-width: 300px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    /* Make withdrawal-page keypad responsive */
+    .key {
+        min-width: 0;
+        padding: 12px 5px !important;
+    }
+
+    .transaction,
+    .transaction-item {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    a,
+    button {
+        touch-action: manipulation;
+    }
+}
