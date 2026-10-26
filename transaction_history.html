@@ -11,7 +11,6 @@
 
     <div style="max-width:650px; margin:20px auto;">
 
-        <!-- BANK HEADER -->
         <div style="background-color:rgb(13,59,13); color:white; text-align:center; padding:25px; border-radius:12px;">
 
             <h1 style="margin:0 0 10px;">D&Q BANK</h1>
@@ -20,8 +19,6 @@
 
         </div>
 
-
-        <!-- ACCOUNT BALANCE -->
         <div style="background-color:white; margin-top:20px; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <p id="accountName" style="margin:0 0 15px; font-weight:bold;"></p>
@@ -36,8 +33,6 @@
 
         </div>
 
-
-        <!-- TRANSACTION LIST -->
         <div style="background-color:white; margin-top:20px; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <h2 style="margin-top:0; font-size:21px;">
@@ -52,8 +47,6 @@
 
         </div>
 
-
-        <!-- BACK BUTTON -->
         <button
             type="button"
             onclick="window.location.href='menu.html'"
@@ -67,18 +60,10 @@
 
     <script>
 
-        // =================================
-        // 1. GET SAVED USERS
-        // =================================
-
         function getUsers() {
             return JSON.parse(localStorage.getItem("atmUsers")) || [];
         }
 
-
-        // =================================
-        // 2. FIND CURRENT USER
-        // =================================
 
         function getCurrentUser() {
             const users = getUsers();
@@ -91,10 +76,6 @@
         }
 
 
-        // =================================
-        // 3. DISPLAY BALANCE AND HISTORY
-        // =================================
-
         function displayTransactionHistory() {
 
             const user = getCurrentUser();
@@ -106,7 +87,6 @@
             const transactionList = document.getElementById("transactionList");
 
 
-            // Check whether an account is selected
             if (!user) {
 
                 accountName.textContent = "Account not found.";
@@ -119,23 +99,15 @@
                 return;
             }
 
-
-            // Display the user's name
             accountName.textContent = "Account Holder: " + user.name;
 
-
-            // Display the latest balance
             balanceDisplay.textContent =
                 "₦" + Number(user.balance).toLocaleString("en-NG");
 
-
-            // Get this user's transactions
             const transactions = Array.isArray(user.transactions)
                 ? user.transactions
                 : [];
 
-
-            // Display a message if there are no transactions
             if (transactions.length === 0) {
 
                 transactionList.innerHTML = "";
@@ -152,12 +124,8 @@
                 return;
             }
 
-
-            // Clear the previous transaction list
             transactionList.innerHTML = "";
 
-
-            // Show newest transactions first
             transactions.slice().reverse().forEach(function(transaction) {
 
                 const transactionDiv = document.createElement("div");
@@ -170,7 +138,6 @@
                 transactionDiv.style.gap = "15px";
 
 
-                // Transaction details
                 const detailsDiv = document.createElement("div");
 
                 const typeText = document.createElement("strong");
@@ -199,8 +166,6 @@
                 detailsDiv.appendChild(dateText);
                 detailsDiv.appendChild(descriptionText);
 
-
-                // Transaction amount
                 const amountDiv = document.createElement("div");
 
                 amountDiv.textContent =
@@ -209,8 +174,6 @@
                 amountDiv.style.fontWeight = "bold";
                 amountDiv.style.whiteSpace = "nowrap";
 
-
-                // Set amount colour
                 if (transaction.type === "Deposit" ||
                     transaction.type === "Transfer Received") {
 
@@ -232,11 +195,6 @@
             });
 
         }
-
-
-        // =================================
-        // 4. RUN WHEN PAGE OPENS
-        // =================================
 
         displayTransactionHistory();
 

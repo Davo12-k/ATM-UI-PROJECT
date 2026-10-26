@@ -138,16 +138,9 @@
     </div>
 
     <script>
-       
-        // 1. GET THE USERS FROM LOCAL STORAGE
-        // ========================================
 
         const users = JSON.parse(localStorage.getItem("atmUsers")) || [];
 
-
-        // ========================================
-        // 2. GET THE CURRENT USER
-        // ========================================
 
         function getCurrentUser() {
 
@@ -160,9 +153,6 @@
         }
 
 
-        // ========================================
-        // 3. DISPLAY ACCOUNT BALANCE
-        // ========================================
 
         function updateBalance() {
 
@@ -179,7 +169,7 @@
             const accountNameDisplay = document.getElementById("accountName");
 
 
-            // DISPLAY THE BALANCE
+            
 
             if (balanceDisplay) {
                 balanceDisplay.innerText =
@@ -187,18 +177,12 @@
             }
 
 
-            // DISPLAY THE USER'S NAME
-
+           
             if (accountNameDisplay) {
                 accountNameDisplay.innerText = user.name;
             }
 
         }
-
-
-        // ========================================
-        // 4. RUN THE FUNCTION
-        // ========================================
 
         updateBalance()
 

@@ -73,18 +73,17 @@
         const deleteBtn = document.getElementById("deleteBtn");
         const numberButtons = document.querySelectorAll(".key");
 
-        // Get all ATM users from localStorage
+       
         function getUsers() {
             return JSON.parse(localStorage.getItem("atmUsers")) || [];
         }
 
-        // Save all ATM users to localStorage
+
         function saveUsers(users) {
             localStorage.setItem("atmUsers", JSON.stringify(users));
         }
 
-        // Find the account currently using the ATM
-        function getCurrentUser(users) {
+
             const accountNumber = localStorage.getItem("currentAccount");
 
             return users.find(user =>
@@ -92,7 +91,7 @@
             );
         }
 
-        // Display the user's current balance
+      
         function updateBalance() {
             const users = getUsers();
             const user = getCurrentUser(users);
@@ -113,7 +112,7 @@
             enterBtn.disabled = false;
         }
 
-        // Handle the number keypad
+       
         numberButtons.forEach(button => {
             button.addEventListener("click", () => {
                 if (withdrawAmountInput.value.length < 12) {
@@ -123,7 +122,7 @@
             });
         });
 
-        // Delete the last digit
+        
         deleteBtn.addEventListener("click", () => {
             withdrawAmountInput.value =
                 withdrawAmountInput.value.slice(0, -1);
@@ -131,7 +130,7 @@
             message.textContent = "";
         });
 
-        // Process the withdrawal
+       
         enterBtn.addEventListener("click", handleWithdrawal);
 
         function handleWithdrawal() {
@@ -174,7 +173,7 @@
                 return;
             }
 
-            // Check whether the user has enough money
+           
             if (amount > user.balance) {
                 message.textContent =
                     "Insufficient funds. Your balance is too low.";
@@ -183,15 +182,15 @@
                 return;
             }
 
-            // Subtract the withdrawal amount
+            
             user.balance -= amount;
 
-            // Create a transaction history array if one doesn't exist
+            
             if (!Array.isArray(user.transactions)) {
                 user.transactions = [];
             }
 
-            // Save the withdrawal in this user's transaction history
+           
             user.transactions.push({
                 type: "Withdrawal",
                 amount: amount,
@@ -200,10 +199,10 @@
                 balanceAfter: user.balance
             });
 
-            // Save the updated account and transaction history
+           
             saveUsers(users);
 
-            // Update the balance displayed on the page
+           
             updateBalance();
 
             message.textContent =
@@ -218,11 +217,10 @@
                 "New Balance: ₦" + user.balance.toLocaleString("en-NG")
             );
 
-            // Clear the amount input
+        
             withdrawAmountInput.value = "";
         }
 
-        // Show the balance when the page opens
         updateBalance();
     </script>
 

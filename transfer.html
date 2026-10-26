@@ -172,10 +172,6 @@
         let verifiedRecipient = null;
 
 
-        // =================================
-        // 4. DISPLAY SENDER'S BALANCE
-        // =================================
-
         function updateBalance() {
             const users = getUsers();
             const sender = getCurrentUser(users);
@@ -189,11 +185,6 @@
             balanceDisplay.innerText =
                 "₦" + Number(sender.balance).toLocaleString("en-NG");
         }
-
-
-        // =================================
-        // 5. VERIFY RECIPIENT
-        // =================================
 
         document.getElementById("checkAccount").addEventListener("click", function() {
             const accountNumber = accountInput.value.trim();
@@ -251,11 +242,6 @@
             messageDisplay.innerText = "Account verified successfully.";
         });
 
-
-        // =================================
-        // 6. NUMERIC KEYPAD
-        // =================================
-
         document.querySelectorAll(".key[data-number]").forEach(function(button) {
             button.addEventListener("click", function() {
                 const digit = button.dataset.number;
@@ -269,18 +255,10 @@
         });
 
 
-        // =================================
-        // 7. DELETE LAST DIGIT
-        // =================================
-
         document.getElementById("deleteBtn").addEventListener("click", function() {
             amountInput.value = amountInput.value.slice(0, -1);
         });
 
-
-        // =================================
-        // 8. RECORD TRANSACTION
-        // =================================
 
         function recordTransaction(user, type, amount, description) {
             if (!Array.isArray(user.transactions)) {
@@ -295,11 +273,6 @@
                 balanceAfter: user.balance
             });
         }
-
-
-        // =================================
-        // 9. TRANSFER MONEY
-        // =================================
 
         document.getElementById("enterBtn").addEventListener("click", function() {
             messageDisplay.innerText = "";
@@ -329,7 +302,6 @@
                 return;
             }
 
-            // Reload the latest saved accounts
             const users = getUsers();
 
             const sender = getCurrentUser(users);
@@ -377,11 +349,9 @@
                 return;
             }
 
-            // Update both accounts
             sender.balance -= amount;
             recipient.balance += amount;
 
-            // Record the sender's transaction
             recordTransaction(
                 sender,
                 "Transfer Sent",
@@ -389,7 +359,6 @@
                 "Money sent to " + recipient.name
             );
 
-            // Record the recipient's transaction
             recordTransaction(
                 recipient,
                 "Transfer Received",
@@ -397,10 +366,8 @@
                 "Money received from " + sender.name
             );
 
-            // Save both accounts
             saveUsers(users);
 
-            // Update the displayed sender balance
             updateBalance();
 
             messageDisplay.style.color = "green";
@@ -417,17 +384,11 @@
                 sender.balance.toLocaleString("en-NG")
             );
 
-            // Clear the transfer form
             amountInput.value = "";
             accountInput.value = "";
             accountNameDisplay.innerText = "";
             verifiedRecipient = null;
         });
-
-
-        // =================================
-        // 10. LOAD BALANCE ON PAGE OPEN
-        // =================================
 
         updateBalance();
     </script>

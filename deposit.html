@@ -80,27 +80,21 @@
     </div>
 
 <script>
-    // Get the input, buttons and display elements
+    
     const amountInput = document.getElementById("amount");
     const keypadButtons = document.querySelectorAll(".keypad button");
     const submitButton = document.getElementById("submitDeposit");
     const balanceDisplay = document.getElementById("balance");
     const accountNameDisplay = document.getElementById("accountName");
 
-
-    // Load all saved accounts
     function getUsers() {
         return JSON.parse(localStorage.getItem("atmUsers")) || [];
     }
 
-
-    // Save all accounts
     function saveUsers(users) {
         localStorage.setItem("atmUsers", JSON.stringify(users));
     }
 
-
-    // Find the currently selected account
     function getCurrentUser(users) {
         const accountNumber = localStorage.getItem("currentAccount");
 
@@ -109,8 +103,6 @@
         });
     }
 
-
-    // Display the latest balance
     function updateBalance() {
         const users = getUsers();
         const user = getCurrentUser(users);
@@ -127,8 +119,6 @@
         accountNameDisplay.innerText = "Welcome, " + user.name;
     }
 
-
-    // Make the keypad work
     keypadButtons.forEach(function(button) {
         button.addEventListener("click", function() {
             const digit = button.innerText;
@@ -145,7 +135,6 @@
     });
 
 
-    // Process the deposit
     submitButton.addEventListener("click", function() {
         const amountText = amountInput.value.trim();
 
@@ -180,15 +169,12 @@
             return;
         }
 
-        // Add money to the selected user's balance
         user.balance += depositAmount;
 
-        // Create the transactions array if one doesn't exist
         if (!Array.isArray(user.transactions)) {
             user.transactions = [];
         }
 
-        // Save the deposit in this user's history
         user.transactions.push({
             type: "Deposit",
             amount: depositAmount,
@@ -197,10 +183,8 @@
             description: "Cash deposited"
         });
 
-        // Save the updated accounts and transactions
         saveUsers(users);
 
-        // Update the displayed balance
         updateBalance();
 
         alert(
@@ -209,12 +193,9 @@
             "\nNew Balance: ₦" + user.balance.toLocaleString("en-NG")
         );
 
-        // Clear the amount field
         amountInput.value = "";
     });
 
-
-    // Display the account balance when the page opens
     updateBalance();
 </script>
 
