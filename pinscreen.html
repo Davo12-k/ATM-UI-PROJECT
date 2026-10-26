@@ -68,37 +68,68 @@
     
 <script>
    
+    
+    // Get all ATM users
+    function getUsers() {
+        return JSON.parse(localStorage.getItem("atmUsers")) || [];
+    }
+
+    // Add a digit to the PIN input
     function digitPin(digit) {
-        let pinInput = document.getElementById("pin");
+        const pinInput = document.getElementById("pin");
+
+        if (!/^\d$/.test(String(digit))) {
+            return;
+        }
 
         if (pinInput.value.length < 4) {
             pinInput.value += digit;
         }
     }
 
+    // Clear the PIN input
     function clearPin() {
         document.getElementById("pin").value = "";
     }
 
+    // Check the entered PIN
     function enterPin() {
-        let enteredPin = document.getElementById("pin").value;
-        let users = JSON.parse(localStorage.getItem("users")) || [];
+        const enteredPin = document.getElementById("pin").value;
 
-        if (enteredPin.length !== 4) {
+        // Get the selected account number
+        const accountNumber = localStorage.getItem("currentAccount");
+
+        // Get all ATM users
+        const users = getUsers();
+
+        // Check that the PIN contains four digits
+        if (!/^\d{4}$/.test(enteredPin)) {
             alert("Please enter your 4-digit PIN.");
             return;
         }
 
-        let user = users.find(function(user) {
-            return user.pin === enteredPin;
+        // Find the selected account
+        const user = users.find(function(user) {
+            return user.accountNumber === accountNumber;
         });
 
-        if (user) {
-            localStorage.setItem("currentUser", JSON.stringify(user));
+        // Check whether the account exists
+        if (!user) {
+            alert("Account not found. Please select your card again.");
+            return;
+        }
+
+        // Check the PIN for that account
+        if (String(user.pin) === enteredPin) {
+            // Remember the selected account
+            localStorage.setItem("currentAccount", user.accountNumber);
+
+            alert("Login successful!");
+
             window.location.href = "menu.html";
         } else {
             alert("Incorrect PIN. Please try again.");
-            document.getElementById("pin").value = "";
+            clearPin();
         }
     }
 </script>
