@@ -70,12 +70,12 @@
 <script>
    
     
-    // Get all ATM users
+    
     function getUsers() {
         return JSON.parse(localStorage.getItem("atmUsers")) || [];
     }
 
-    // Add a digit to the PIN input
+    
     function digitPin(digit) {
         const pinInput = document.getElementById("pin");
 
@@ -88,41 +88,40 @@
         }
     }
 
-    // Clear the PIN input
+    
     function clearPin() {
         document.getElementById("pin").value = "";
     }
 
-    // Check the entered PIN
+    
     function enterPin() {
         const enteredPin = document.getElementById("pin").value;
 
-        // Get the selected account number
+        
         const accountNumber = localStorage.getItem("currentAccount");
 
-        // Get all ATM users
+        
         const users = getUsers();
 
-        // Check that the PIN contains four digits
-        if (!/^\d{4}$/.test(enteredPin)) {
+                if (!/^\d{4}$/.test(enteredPin)) {
             alert("Please enter your 4-digit PIN.");
             return;
         }
 
-        // Find the selected account
+        
         const user = users.find(function(user) {
             return user.accountNumber === accountNumber;
         });
 
-        // Check whether the account exists
+        
         if (!user) {
             alert("Account not found. Please select your card again.");
             return;
         }
 
-        // Check the PIN for that account
+        
         if (String(user.pin) === enteredPin) {
-            // Remember the selected account
+            
             localStorage.setItem("currentAccount", user.accountNumber);
 
             alert("Login successful!");

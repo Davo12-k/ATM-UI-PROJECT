@@ -134,10 +134,7 @@
     </style>
 
     <script>
-        // =================================
-        // 1. GET AND SAVE USERS
-        // =================================
-
+    
         function getUsers() {
             return JSON.parse(localStorage.getItem("atmUsers")) || [];
         }
@@ -147,9 +144,7 @@
         }
 
 
-        // =================================
-        // 2. GET CURRENT USER
-        // =================================
+        
 
         function getCurrentUser(users) {
             const accountNumber = localStorage.getItem("currentAccount");
@@ -160,9 +155,7 @@
         }
 
 
-        // =================================
-        // 3. GET PAGE ELEMENTS
-        // =================================
+        
 
         const accountInput = document.getElementById("accountNumber");
         const amountInput = document.getElementById("amount");
@@ -179,7 +172,7 @@
 
             if (!sender) {
                 alert("Please select your card first.");
-                window.location.href = "atm_ui.html";
+                window.location.href = "index.html";
                 return;
             }
 
